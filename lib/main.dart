@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
+import 'package:portfolio/ui/browser/browser.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,31 +20,11 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.amber,
               ),
-              home: MainScreen(),
+              home: MainScreenBrowser(),
             );
           },
         );
       },
     );
   }
-}
-
-class MainScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xff3d405b),
-    );
-  }
-}
-
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-
-  @override
-  // TODO: implement preferredSize
-  Size get preferredSize => throw UnimplementedError();
 }
