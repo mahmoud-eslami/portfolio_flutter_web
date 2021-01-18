@@ -18,8 +18,9 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'Mahmoud eslami',
               theme: ThemeData(
-                primarySwatch: Colors.amber,
+                primarySwatch: Colors.blueGrey,
                 fontFamily: "Comfort",
+                brightness: Brightness.dark,
               ),
               home: MainScreenBrowser(),
             );
