@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
               title: 'Mahmoud eslami',
               theme: ThemeData(
                 primarySwatch: Colors.amber,
+                fontFamily: "Comfort",
               ),
               home: MainScreenBrowser(),
             );
