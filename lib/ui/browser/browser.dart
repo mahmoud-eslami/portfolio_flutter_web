@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/resource/colors.dart';
+import 'package:portfolio/tools/custom_painter/custom_painter.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
 
 class MainScreenBrowser extends StatelessWidget {
@@ -39,39 +40,60 @@ class _BrowserBodyState extends State<BrowserBody> {
       fontWeight: FontWeight.bold,
       color: AppColors.textColor,
     );
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Column(
+    return Stack(
+      children: [
+        Align(
+          alignment: Alignment.topRight,
+          child: CustomPaint(
+            size: Size(1000.0, 1000.0),
+            isComplex: true,
+            painter: ShapeOne(),
+          ),
+        ),
+        Container(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Hi There 😝!",
-                style: headerTitleStyle,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Hi There 😝!",
+                    style: headerTitleStyle,
+                  ),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier * 3,
+                  ),
+                  Text(
+                    "I,m Mahmoud Eslami a \nFlutter developer",
+                    style: bodyTextStyle,
+                  ),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier * 5,
+                  ),
+                  Text(
+                    "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and \nNative in android .",
+                    style: captionTextStyle,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
-              Text(
-                "I,m Mahmoud Eslami a Flutter developer",
-                style: bodyTextStyle,
+              SizedBox(
+                width: SizeConfig.widthMultiplier * 5,
               ),
-              Text(
-                "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and Native in android .",
-                style: captionTextStyle,
-                overflow: TextOverflow.ellipsis,
-              ),
+              Material(
+                borderRadius: BorderRadius.all(Radius.circular(25)),
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: Image.asset(
+                  "assets/images/myimg.jpg",
+                  height: SizeConfig.heightMultiplier * 30,
+                ),
+              )
             ],
           ),
-          Material(
-            borderRadius: BorderRadius.all(Radius.circular(25)),
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            child: Image.asset(
-              "assets/images/myimg.jpg",
-              height: SizeConfig.heightMultiplier * 30,
-            ),
-          )
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
