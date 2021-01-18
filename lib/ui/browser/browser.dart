@@ -44,9 +44,11 @@ class _BrowserBodyState extends State<BrowserBody> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Hi There !",
+                "Hi There 😝!",
                 style: headerTitleStyle,
               ),
               Text(
@@ -59,6 +61,14 @@ class _BrowserBodyState extends State<BrowserBody> {
                 overflow: TextOverflow.ellipsis,
               ),
             ],
+          ),
+          Material(
+            borderRadius: BorderRadius.all(Radius.circular(25)),
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            child: Image.asset(
+              "assets/images/myimg.jpg",
+              height: SizeConfig.heightMultiplier * 30,
+            ),
           )
         ],
       ),
