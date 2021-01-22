@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
-import 'package:portfolio/ui/browser/browser.dart';
+import 'package:portfolio/ui/main_screen/main_screen.dart';
 
 void main() {
   runApp(MyApp());
