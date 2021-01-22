@@ -24,19 +24,19 @@ class _BrowserBodyState extends State<BrowserBody> {
   Widget build(BuildContext context) {
     var headerTitleStyle = TextStyle(
       fontFamily: "ComfortBold",
-      fontSize: SizeConfig.textMultiplier * 4,
+      fontSize: 40,
       fontWeight: FontWeight.bold,
       color: AppColors.textColor,
     );
     var bodyTextStyle = TextStyle(
       fontFamily: "ComfortBold",
-      fontSize: SizeConfig.textMultiplier * 2,
+      fontSize: 20,
       fontWeight: FontWeight.bold,
       color: AppColors.textColor,
     );
     var captionTextStyle = TextStyle(
       fontFamily: "ComfortBold",
-      fontSize: SizeConfig.textMultiplier * 1,
+      fontSize: 17,
       fontWeight: FontWeight.bold,
       color: AppColors.textColor,
     );
@@ -45,58 +45,68 @@ class _BrowserBodyState extends State<BrowserBody> {
         Align(
           alignment: Alignment.topRight,
           child: CustomPaint(
-            size: Size(1000.0, 1000.0),
-            isComplex: true,
             painter: ShapeOne(),
           ),
         ),
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
+        SingleChildScrollView(
+          child: Center(
+            child: Container(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Hi There 😝!",
-                    style: headerTitleStyle,
+                  ClipOval(
+                    child: Image.asset(
+                      "assets/images/myimg.jpg",
+                      height: SizeConfig.heightMultiplier * 20,
+                      width: SizeConfig.heightMultiplier * 20,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   SizedBox(
                     height: SizeConfig.heightMultiplier * 3,
                   ),
-                  Text(
-                    "I,m Mahmoud Eslami a \nFlutter developer",
-                    style: bodyTextStyle,
-                  ),
-                  SizedBox(
-                    height: SizeConfig.heightMultiplier * 5,
-                  ),
-                  Text(
-                    "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and \nNative in android .",
-                    style: captionTextStyle,
-                    overflow: TextOverflow.ellipsis,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Hi There !",
+                        style: headerTitleStyle,
+                      ),
+                      SizedBox(
+                        height: SizeConfig.heightMultiplier * 1,
+                      ),
+                      Text(
+                        "I,m a \nFlutter developer",
+                        style: bodyTextStyle,
+                      ),
+                      SizedBox(
+                        height: SizeConfig.heightMultiplier * 2,
+                      ),
+                      Text(
+                        "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and \nNative in android .",
+                        style: captionTextStyle,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
                 ],
               ),
-              SizedBox(
-                width: SizeConfig.widthMultiplier * 5,
-              ),
-              Material(
-                borderRadius: BorderRadius.all(Radius.circular(25)),
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Image.asset(
-                  "assets/images/myimg.jpg",
-                  height: SizeConfig.heightMultiplier * 30,
-                ),
-              )
-            ],
+            ),
           ),
         ),
       ],
     );
   }
 }
+
+class BottomSocialBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
