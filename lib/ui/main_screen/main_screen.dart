@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/resource/colors.dart';
 import 'package:portfolio/tools/custom_painter/custom_painter.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
+import 'package:portfolio/tools/url_launcher/custom_url_launcher.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class MainScreenBrowser extends StatelessWidget {
@@ -53,67 +54,69 @@ class _BrowserBodyState extends State<BrowserBody> {
           fontWeight: FontWeight.bold,
           color: AppColors.textColor,
         );
-        return Stack(
-          children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: CustomPaint(
-                painter: ShapeOne(),
-              ),
-            ),
-            Center(
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ClipOval(
-                      child: Image.asset(
-                        "assets/images/myimg.jpg",
-                        height: SizeConfig.heightMultiplier * 20,
-                        width: SizeConfig.heightMultiplier * 20,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(
-                      height: SizeConfig.heightMultiplier * 3,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Mahmoud Eslami",
-                          style: titleSize,
-                        ),
-                        SizedBox(
-                          height: SizeConfig.heightMultiplier * 1,
-                        ),
-                        Text(
-                          "I,m a Flutter developer",
-                          style: bodySize,
-                        ),
-                        SizedBox(
-                          height: SizeConfig.heightMultiplier * 2,
-                        ),
-                        Text(
-                          "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and \nNative in android .",
-                          style: captionSize,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: SizeConfig.heightMultiplier * 5,
-                    ),
-                    BottomSocialBar(),
-                    SizedBox(
-                      height: SizeConfig.heightMultiplier * 3,
-                    ),
-                  ],
+        return SingleChildScrollView(
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: CustomPaint(
+                  painter: ShapeOne(),
                 ),
               ),
-            ),
-          ],
+              Center(
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ClipOval(
+                        child: Image.asset(
+                          "assets/images/myimg.jpg",
+                          height: SizeConfig.heightMultiplier * 20,
+                          width: SizeConfig.heightMultiplier * 20,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      SizedBox(
+                        height: SizeConfig.heightMultiplier * 3,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Mahmoud Eslami",
+                            style: titleSize,
+                          ),
+                          SizedBox(
+                            height: SizeConfig.heightMultiplier * 1,
+                          ),
+                          Text(
+                            "I,m a Flutter developer",
+                            style: bodySize,
+                          ),
+                          SizedBox(
+                            height: SizeConfig.heightMultiplier * 2,
+                          ),
+                          Text(
+                            "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and \nNative in android .",
+                            style: captionSize,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: SizeConfig.heightMultiplier * 2,
+                      ),
+                      BottomSocialBar(),
+                      SizedBox(
+                        height: SizeConfig.heightMultiplier * 3,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       },
     );
@@ -126,30 +129,50 @@ class BottomSocialBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(
-          'assets/images/github.png',
-          width: SizeConfig.widthMultiplier * 5,
+        GestureDetector(
+          onTap: () {
+            CustomUrlLauncher.emailUrlLauncher(url: "https://github.com/mahmoud-eslami");
+          },
+          child: Image.asset(
+            'assets/images/github.png',
+            width: SizeConfig.widthMultiplier * 5,
+          ),
         ),
         SizedBox(
           width: SizeConfig.widthMultiplier * 2,
         ),
-        Image.asset(
-          'assets/images/instagram.png',
-          width: SizeConfig.widthMultiplier * 5,
+        GestureDetector(
+          onTap: () {
+            CustomUrlLauncher.emailUrlLauncher(url: "https://www.instagram.com/bigproblembig/");
+          },
+          child: Image.asset(
+            'assets/images/instagram.png',
+            width: SizeConfig.widthMultiplier * 5,
+          ),
         ),
         SizedBox(
           width: SizeConfig.widthMultiplier * 2,
         ),
-        Image.asset(
-          'assets/images/linkedin.png',
-          width: SizeConfig.widthMultiplier * 5,
+        GestureDetector(
+          onTap: () {
+            CustomUrlLauncher.emailUrlLauncher(url: "https://www.linkedin.com/in/mahmoud-eslami-182351197/");
+          },
+          child: Image.asset(
+            'assets/images/linkedin.png',
+            width: SizeConfig.widthMultiplier * 5,
+          ),
         ),
         SizedBox(
           width: SizeConfig.widthMultiplier * 2,
         ),
-        Image.asset(
-          'assets/images/twitter.png',
-          width: SizeConfig.widthMultiplier * 5,
+        GestureDetector(
+          onTap: () {
+            CustomUrlLauncher.emailUrlLauncher(url: "https://twitter.com/es_mahmoud_");
+          },
+          child: Image.asset(
+            'assets/images/twitter.png',
+            width: SizeConfig.widthMultiplier * 5,
+          ),
         ),
       ],
     );
