@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/resource/colors.dart';
 import 'package:portfolio/tools/custom_painter/custom_painter.dart';
@@ -22,7 +23,57 @@ class BrowserBody extends StatefulWidget {
   _BrowserBodyState createState() => _BrowserBodyState();
 }
 
-class _BrowserBodyState extends State<BrowserBody> {
+class _BrowserBodyState extends State<BrowserBody>
+    with SingleTickerProviderStateMixin {
+  AnimationController animationController;
+  Animation<double> imageAnimation;
+  Animation<double> titleAnimation;
+  Animation<double> bodyAnimation;
+  Animation<double> captionAnimation;
+  Animation<double> bottomBarAnimation;
+
+  @override
+  void initState() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(
+        seconds: 2,
+      ),
+    )..forward();
+    imageAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+          curve: Interval(0.0, 0.2, curve: Curves.ease),
+          parent: animationController),
+    );
+    titleAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+          curve: Interval(0.2, 0.4, curve: Curves.ease),
+          parent: animationController),
+    );
+    bodyAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+          curve: Interval(0.4, 0.6, curve: Curves.ease),
+          parent: animationController),
+    );
+    captionAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+          curve: Interval(0.6, 0.8, curve: Curves.ease),
+          parent: animationController),
+    );
+    bottomBarAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+          curve: Interval(0.8, 1.0, curve: Curves.ease),
+          parent: animationController),
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
@@ -54,69 +105,59 @@ class _BrowserBodyState extends State<BrowserBody> {
           fontWeight: FontWeight.bold,
           color: AppColors.textColor,
         );
-        return SingleChildScrollView(
-          child: Stack(
-            children: [
-              Align(
-                alignment: Alignment.topRight,
-                child: CustomPaint(
-                  painter: ShapeOne(),
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FadeTransition(
+              opacity: imageAnimation,
+              child: ClipOval(
+                child: Image.asset(
+                  "assets/images/myimg.jpg",
+                  height: SizeConfig.heightMultiplier * 20,
+                  width: SizeConfig.heightMultiplier * 20,
+                  fit: BoxFit.cover,
                 ),
               ),
-              Center(
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ClipOval(
-                        child: Image.asset(
-                          "assets/images/myimg.jpg",
-                          height: SizeConfig.heightMultiplier * 20,
-                          width: SizeConfig.heightMultiplier * 20,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      SizedBox(
-                        height: SizeConfig.heightMultiplier * 3,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Mahmoud Eslami",
-                            style: titleSize,
-                          ),
-                          SizedBox(
-                            height: SizeConfig.heightMultiplier * 1,
-                          ),
-                          Text(
-                            "I,m a Flutter developer",
-                            style: bodySize,
-                          ),
-                          SizedBox(
-                            height: SizeConfig.heightMultiplier * 2,
-                          ),
-                          Text(
-                            "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and \nNative in android .",
-                            style: captionSize,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: SizeConfig.heightMultiplier * 2,
-                      ),
-                      BottomSocialBar(),
-                      SizedBox(
-                        height: SizeConfig.heightMultiplier * 3,
-                      ),
-                    ],
-                  ),
-                ),
+            ),
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 5,
+            ),
+            FadeTransition(
+              opacity: titleAnimation,
+              child: Text(
+                "Mahmoud Eslami",
+                style: titleSize,
               ),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 1,
+            ),
+            FadeTransition(
+              opacity: bodyAnimation,
+              child: Text(
+                "I,m a Flutter developer",
+                style: bodySize,
+              ),
+            ),
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 1,
+            ),
+            FadeTransition(
+              opacity: captionAnimation,
+              child: Text(
+                "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and \nNative in android .",
+                style: captionSize,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 4,
+            ),
+            FadeTransition(
+              opacity: bottomBarAnimation,
+              child: BottomSocialBar(),
+            ),
+          ],
         );
       },
     );
@@ -131,7 +172,8 @@ class BottomSocialBar extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            CustomUrlLauncher.emailUrlLauncher(url: "https://github.com/mahmoud-eslami");
+            CustomUrlLauncher.emailUrlLauncher(
+                url: "https://github.com/mahmoud-eslami");
           },
           child: Image.asset(
             'assets/images/github.png',
@@ -143,7 +185,8 @@ class BottomSocialBar extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            CustomUrlLauncher.emailUrlLauncher(url: "https://www.instagram.com/bigproblembig/");
+            CustomUrlLauncher.emailUrlLauncher(
+                url: "https://www.instagram.com/bigproblembig/");
           },
           child: Image.asset(
             'assets/images/instagram.png',
@@ -155,7 +198,8 @@ class BottomSocialBar extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            CustomUrlLauncher.emailUrlLauncher(url: "https://www.linkedin.com/in/mahmoud-eslami-182351197/");
+            CustomUrlLauncher.emailUrlLauncher(
+                url: "https://www.linkedin.com/in/mahmoud-eslami-182351197/");
           },
           child: Image.asset(
             'assets/images/linkedin.png',
@@ -167,7 +211,8 @@ class BottomSocialBar extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            CustomUrlLauncher.emailUrlLauncher(url: "https://twitter.com/es_mahmoud_");
+            CustomUrlLauncher.emailUrlLauncher(
+                url: "https://twitter.com/es_mahmoud_");
           },
           child: Image.asset(
             'assets/images/twitter.png',
