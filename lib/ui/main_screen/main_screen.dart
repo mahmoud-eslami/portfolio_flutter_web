@@ -42,7 +42,7 @@ class _BrowserBodyState extends State<BrowserBody>
     )..forward();
     imageAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
-          curve: Interval(0.0, 0.2, curve: Curves.ease),
+          curve: Interval(0.1, 0.2, curve: Curves.ease),
           parent: animationController),
     );
     titleAnimation = Tween<double>(begin: 0, end: 1).animate(
@@ -105,59 +105,144 @@ class _BrowserBodyState extends State<BrowserBody>
           fontWeight: FontWeight.bold,
           color: AppColors.textColor,
         );
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FadeTransition(
-              opacity: imageAnimation,
-              child: ClipOval(
-                child: Image.asset(
-                  "assets/images/myimg.jpg",
-                  height: SizeConfig.heightMultiplier * 20,
-                  width: SizeConfig.heightMultiplier * 20,
-                  fit: BoxFit.cover,
-                ),
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FadeTransition(
+                    opacity: imageAnimation,
+                    child: ClipOval(
+                      child: Image.asset(
+                        "assets/images/myimg.jpg",
+                        height: SizeConfig.heightMultiplier * 20,
+                        width: SizeConfig.heightMultiplier * 20,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier * 3,
+                  ),
+                  Column(
+                    children: [
+                      FadeTransition(
+                        opacity: titleAnimation,
+                        child: Text(
+                          "Mahmoud Eslami",
+                          style: titleSize,
+                        ),
+                      ),
+                      SizedBox(
+                        height: SizeConfig.heightMultiplier * 1,
+                      ),
+                      FadeTransition(
+                        opacity: bodyAnimation,
+                        child: Text(
+                          "I,m a Flutter developer",
+                          style: bodySize,
+                        ),
+                      ),
+                      SizedBox(
+                        height: SizeConfig.heightMultiplier * 1,
+                      ),
+                      FadeTransition(
+                        opacity: captionAnimation,
+                        child: Text(
+                          "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and \nNative in android .",
+                          style: captionSize,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      SizedBox(
+                        height: SizeConfig.heightMultiplier * 2,
+                      ),
+                      Text(
+                        'Skills : ',
+                        style: captionSize,
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/images/dart.png',
+                            width: SizeConfig.widthMultiplier * 5,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Image.asset(
+                            'assets/images/flutter.png',
+                            width: SizeConfig.widthMultiplier * 5,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Image.asset(
+                            'assets/images/githubb.png',
+                            width: SizeConfig.widthMultiplier * 5,
+                          ),
+                        ],
+                      ),
+                      Text(
+                        'Familiar with : ',
+                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/images/django.png',
+                            width: SizeConfig.widthMultiplier * 5,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Image.asset(
+                            'assets/images/mysql.png',
+                            width: SizeConfig.widthMultiplier * 5,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Image.asset(
+                            'assets/images/python.png',
+                            width: SizeConfig.widthMultiplier * 5,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Image.asset(
+                            'assets/images/java.png',
+                            width: SizeConfig.widthMultiplier * 5,
+                          ),
+                        ],
+                      ),
+                      Text(
+                        'Wish List : ',
+                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/images/kotlin.png',
+                            width: SizeConfig.widthMultiplier * 5,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ),
-            SizedBox(
-              height: SizeConfig.heightMultiplier * 5,
-            ),
-            FadeTransition(
-              opacity: titleAnimation,
-              child: Text(
-                "Mahmoud Eslami",
-                style: titleSize,
+              FadeTransition(
+                opacity: bottomBarAnimation,
+                child: BottomSocialBar(),
               ),
-            ),
-            SizedBox(
-              height: SizeConfig.heightMultiplier * 1,
-            ),
-            FadeTransition(
-              opacity: bodyAnimation,
-              child: Text(
-                "I,m a Flutter developer",
-                style: bodySize,
-              ),
-            ),
-            SizedBox(
-              height: SizeConfig.heightMultiplier * 1,
-            ),
-            FadeTransition(
-              opacity: captionAnimation,
-              child: Text(
-                "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and \nNative in android .",
-                style: captionSize,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            SizedBox(
-              height: SizeConfig.heightMultiplier * 4,
-            ),
-            FadeTransition(
-              opacity: bottomBarAnimation,
-              child: BottomSocialBar(),
-            ),
-          ],
+            ],
+          ),
         );
       },
     );
@@ -177,11 +262,11 @@ class BottomSocialBar extends StatelessWidget {
           },
           child: Image.asset(
             'assets/images/github.png',
-            width: SizeConfig.widthMultiplier * 5,
+            width: SizeConfig.widthMultiplier * 4,
           ),
         ),
         SizedBox(
-          width: SizeConfig.widthMultiplier * 2,
+          width: SizeConfig.widthMultiplier * 3,
         ),
         GestureDetector(
           onTap: () {
@@ -190,11 +275,11 @@ class BottomSocialBar extends StatelessWidget {
           },
           child: Image.asset(
             'assets/images/instagram.png',
-            width: SizeConfig.widthMultiplier * 5,
+            width: SizeConfig.widthMultiplier * 4,
           ),
         ),
         SizedBox(
-          width: SizeConfig.widthMultiplier * 2,
+          width: SizeConfig.widthMultiplier * 3,
         ),
         GestureDetector(
           onTap: () {
@@ -203,11 +288,11 @@ class BottomSocialBar extends StatelessWidget {
           },
           child: Image.asset(
             'assets/images/linkedin.png',
-            width: SizeConfig.widthMultiplier * 5,
+            width: SizeConfig.widthMultiplier * 4,
           ),
         ),
         SizedBox(
-          width: SizeConfig.widthMultiplier * 2,
+          width: SizeConfig.widthMultiplier * 3,
         ),
         GestureDetector(
           onTap: () {
@@ -216,7 +301,7 @@ class BottomSocialBar extends StatelessWidget {
           },
           child: Image.asset(
             'assets/images/twitter.png',
-            width: SizeConfig.widthMultiplier * 5,
+            width: SizeConfig.widthMultiplier * 4,
           ),
         ),
       ],
