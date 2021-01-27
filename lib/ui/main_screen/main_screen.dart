@@ -30,6 +30,7 @@ class _BrowserBodyState extends State<BrowserBody>
   Animation<double> titleAnimation;
   Animation<double> bodyAnimation;
   Animation<double> captionAnimation;
+  Animation<double> skillsAnimation;
   Animation<double> bottomBarAnimation;
 
   @override
@@ -47,22 +48,27 @@ class _BrowserBodyState extends State<BrowserBody>
     );
     titleAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
-          curve: Interval(0.2, 0.4, curve: Curves.ease),
+          curve: Interval(0.2, 0.35, curve: Curves.ease),
           parent: animationController),
     );
     bodyAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
-          curve: Interval(0.4, 0.6, curve: Curves.ease),
+          curve: Interval(0.35, 0.55, curve: Curves.ease),
           parent: animationController),
     );
     captionAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
-          curve: Interval(0.6, 0.8, curve: Curves.ease),
+          curve: Interval(0.55, 0.75, curve: Curves.ease),
+          parent: animationController),
+    );
+    skillsAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+          curve: Interval(0.75, 0.87, curve: Curves.ease),
           parent: animationController),
     );
     bottomBarAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
-          curve: Interval(0.8, 1.0, curve: Curves.ease),
+          curve: Interval(0.87, 1.0, curve: Curves.ease),
           parent: animationController),
     );
     super.initState();
@@ -93,21 +99,28 @@ class _BrowserBodyState extends State<BrowserBody>
               (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
                   ? 20
                   : 15,
-          fontWeight: FontWeight.bold,
+          color: AppColors.textColor,
+        );
+        var subTitleSize = TextStyle(
+          fontFamily: "ComfortBold",
+          fontSize:
+              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                  ? 15
+                  : 10,
           color: AppColors.textColor,
         );
         var captionSize = TextStyle(
           fontFamily: "ComfortBold",
           fontSize:
               (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 15
-                  : 10,
-          fontWeight: FontWeight.bold,
+                  ? 12
+                  : 9,
           color: AppColors.textColor,
         );
         return SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(height: SizeConfig.heightMultiplier * 2 + SizeConfig.widthMultiplier * 2,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -123,14 +136,16 @@ class _BrowserBodyState extends State<BrowserBody>
                     ),
                   ),
                   SizedBox(
-                    height: SizeConfig.heightMultiplier * 3,
+                    width: SizeConfig.heightMultiplier * 6,
                   ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       FadeTransition(
                         opacity: titleAnimation,
                         child: Text(
-                          "Mahmoud Eslami",
+                          "Mahmoud Eslami 👋🏻",
                           style: titleSize,
                         ),
                       ),
@@ -140,7 +155,7 @@ class _BrowserBodyState extends State<BrowserBody>
                       FadeTransition(
                         opacity: bodyAnimation,
                         child: Text(
-                          "I,m a Flutter developer",
+                          "Flutter developer",
                           style: bodySize,
                         ),
                       ),
@@ -151,95 +166,116 @@ class _BrowserBodyState extends State<BrowserBody>
                         opacity: captionAnimation,
                         child: Text(
                           "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and \nNative in android .",
-                          style: captionSize,
+                          style: subTitleSize,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       SizedBox(
                         height: SizeConfig.heightMultiplier * 2,
                       ),
-                      Text(
-                        'Skills : ',
-                        style: captionSize,
-                      ),
-                      Row(
-                        children: [
-                          Image.asset(
-                            'assets/images/dart.png',
-                            width: SizeConfig.widthMultiplier * 5,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Image.asset(
-                            'assets/images/flutter.png',
-                            width: SizeConfig.widthMultiplier * 5,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Image.asset(
-                            'assets/images/githubb.png',
-                            width: SizeConfig.widthMultiplier * 5,
-                          ),
-                        ],
-                      ),
-                      Text(
-                        'Familiar with : ',
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(
-                              fontWeight: FontWeight.bold,
+                      FadeTransition(
+                        opacity: skillsAnimation,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Skills : ',
+                              style: captionSize,
                             ),
-                      ),
-                      Row(
-                        children: [
-                          Image.asset(
-                            'assets/images/django.png',
-                            width: SizeConfig.widthMultiplier * 5,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Image.asset(
-                            'assets/images/mysql.png',
-                            width: SizeConfig.widthMultiplier * 5,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Image.asset(
-                            'assets/images/python.png',
-                            width: SizeConfig.widthMultiplier * 5,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Image.asset(
-                            'assets/images/java.png',
-                            width: SizeConfig.widthMultiplier * 5,
-                          ),
-                        ],
-                      ),
-                      Text(
-                        'Wish List : ',
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(
-                              fontWeight: FontWeight.bold,
+                            SizedBox(height: SizeConfig.widthMultiplier * 1,),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/images/dart.png',
+                                  width: SizeConfig.widthMultiplier * 4,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                  'assets/images/flutter.png',
+                                  width: SizeConfig.widthMultiplier * 4,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                  'assets/images/githubb.png',
+                                  width: SizeConfig.widthMultiplier * 4,
+                                ),SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                  'assets/images/trello.png',
+                                  width: SizeConfig.widthMultiplier * 4,
+                                ),
+                              ],
                             ),
-                      ),
-                      Row(
-                        children: [
-                          Image.asset(
-                            'assets/images/kotlin.png',
-                            width: SizeConfig.widthMultiplier * 5,
-                          ),
-                        ],
-                      ),
+                            SizedBox(height: SizeConfig.widthMultiplier * 1,),
+                            Text(
+                              'Familiar with : ',
+                              style: captionSize,
+                            ),
+                            SizedBox(height: SizeConfig.widthMultiplier * 1,),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/images/django.png',
+                                  width: SizeConfig.widthMultiplier * 4,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                  'assets/images/mysql.png',
+                                  width: SizeConfig.widthMultiplier * 4,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                  'assets/images/python.png',
+                                  width: SizeConfig.widthMultiplier * 4,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                  'assets/images/java.png',
+                                  width: SizeConfig.widthMultiplier * 4,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: SizeConfig.widthMultiplier * 1,),
+                            Text(
+                              'Learn for the future : ',
+                              style: captionSize,
+                            ),
+                            SizedBox(height: SizeConfig.widthMultiplier * 1,),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/images/kotlin.png',
+                                  width: SizeConfig.widthMultiplier * 4,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ],
               ),
+              SizedBox(
+                height: SizeConfig.heightMultiplier * 3 + SizeConfig.widthMultiplier * 10,
+              ),
               FadeTransition(
                 opacity: bottomBarAnimation,
                 child: BottomSocialBar(),
+              ),
+              SizedBox(
+                height: SizeConfig.heightMultiplier * 2,
               ),
             ],
           ),
@@ -266,7 +302,7 @@ class BottomSocialBar extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: SizeConfig.widthMultiplier * 3,
+          width: SizeConfig.widthMultiplier * 5,
         ),
         GestureDetector(
           onTap: () {
@@ -279,7 +315,7 @@ class BottomSocialBar extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: SizeConfig.widthMultiplier * 3,
+          width: SizeConfig.widthMultiplier * 5,
         ),
         GestureDetector(
           onTap: () {
@@ -292,7 +328,7 @@ class BottomSocialBar extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: SizeConfig.widthMultiplier * 3,
+          width: SizeConfig.widthMultiplier * 5,
         ),
         GestureDetector(
           onTap: () {
