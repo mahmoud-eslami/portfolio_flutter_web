@@ -4,23 +4,24 @@ import 'package:portfolio/tools/size_config/size_config.dart';
 import 'package:portfolio/tools/url_launcher/custom_url_launcher.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class MainScreenBrowser extends StatelessWidget {
+class MainScreenMobile extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: MobileCustomAppBar(),
       backgroundColor: AppColors.bgColor,
-      body: BrowserBody(),
+      body: MobileBody(),
     );
   }
 }
 
-class BrowserBody extends StatefulWidget {
+class MobileBody extends StatefulWidget {
   @override
-  _BrowserBodyState createState() => _BrowserBodyState();
+  _MobileBodyState createState() => _MobileBodyState();
 }
 
-class _BrowserBodyState extends State<BrowserBody>
+class _MobileBodyState extends State<MobileBody>
     with SingleTickerProviderStateMixin {
   AnimationController animationController;
   Animation<double> imageAnimation;
@@ -84,41 +85,41 @@ class _BrowserBodyState extends State<BrowserBody>
         var titleSize = TextStyle(
           fontFamily: "ComfortBold",
           fontSize:
-              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 40
-                  : 20,
+          (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+              ? 40
+              : 20,
           fontWeight: FontWeight.bold,
           color: AppColors.textColor,
         );
         var bodySize = TextStyle(
           fontFamily: "ComfortBold",
           fontSize:
-              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 20
-                  : 15,
+          (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+              ? 20
+              : 15,
           color: AppColors.textColor,
         );
         var subTitleSize = TextStyle(
           fontFamily: "ComfortBold",
           fontSize:
-              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 15
-                  : 10,
+          (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+              ? 15
+              : 10,
           color: AppColors.textColor,
         );
         var captionSize = TextStyle(
           fontFamily: "ComfortBold",
           fontSize:
-              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 12
-                  : 9,
+          (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+              ? 12
+              : 9,
           color: AppColors.textColor,
         );
         return SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: SizeConfig.heightMultiplier * 2 + SizeConfig.widthMultiplier * 2,),
-              Row(
+              SizedBox(height: SizeConfig.heightMultiplier * 1),
+              Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   FadeTransition(
@@ -133,47 +134,51 @@ class _BrowserBodyState extends State<BrowserBody>
                     ),
                   ),
                   SizedBox(
-                    width: SizeConfig.heightMultiplier * 6,
+                    height: SizeConfig.heightMultiplier * 9,
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      FadeTransition(
-                        opacity: titleAnimation,
-                        child: Text(
-                          "Mahmoud Eslami 👋🏻",
-                          style: titleSize,
-                        ),
+                      Column(
+                        children: [
+                          FadeTransition(
+                            opacity: titleAnimation,
+                            child: Text(
+                              "Mahmoud Eslami 👋🏻",
+                              style: titleSize,
+                            ),
+                          ),
+                          SizedBox(
+                            height: SizeConfig.heightMultiplier * 1,
+                          ),
+                          FadeTransition(
+                            opacity: bodyAnimation,
+                            child: Text(
+                              "Flutter developer",
+                              style: bodySize,
+                            ),
+                          ),
+                          SizedBox(
+                            height: SizeConfig.heightMultiplier * 1,
+                          ),
+                          FadeTransition(
+                            opacity: captionAnimation,
+                            child: Text(
+                              "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and \nNative in android .",
+                              style: subTitleSize,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(
-                        height: SizeConfig.heightMultiplier * 1,
-                      ),
-                      FadeTransition(
-                        opacity: bodyAnimation,
-                        child: Text(
-                          "Flutter developer",
-                          style: bodySize,
-                        ),
-                      ),
-                      SizedBox(
-                        height: SizeConfig.heightMultiplier * 1,
-                      ),
-                      FadeTransition(
-                        opacity: captionAnimation,
-                        child: Text(
-                          "I,m software developer and focus on Flutter \nand passion for learn more about Kotlin and \nNative in android .",
-                          style: subTitleSize,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: SizeConfig.heightMultiplier * 2,
+                        width: SizeConfig.widthMultiplier * 10,
                       ),
                       FadeTransition(
                         opacity: skillsAnimation,
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
                               'Skills : ',
@@ -181,6 +186,7 @@ class _BrowserBodyState extends State<BrowserBody>
                             ),
                             SizedBox(height: SizeConfig.widthMultiplier * 1,),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Image.asset(
                                   'assets/images/dart.png',
@@ -215,6 +221,7 @@ class _BrowserBodyState extends State<BrowserBody>
                             ),
                             SizedBox(height: SizeConfig.widthMultiplier * 1,),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Image.asset(
                                   'assets/images/django.png',
@@ -250,6 +257,7 @@ class _BrowserBodyState extends State<BrowserBody>
                             ),
                             SizedBox(height: SizeConfig.widthMultiplier * 1,),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Image.asset(
                                   'assets/images/kotlin.png',
@@ -265,11 +273,11 @@ class _BrowserBodyState extends State<BrowserBody>
                 ],
               ),
               SizedBox(
-                height: SizeConfig.heightMultiplier * 3 + SizeConfig.widthMultiplier * 10,
+                height: SizeConfig.heightMultiplier * 10,
               ),
               FadeTransition(
                 opacity: bottomBarAnimation,
-                child: BottomSocialBar(),
+                child: MobileBottomSocialBar(),
               ),
               SizedBox(
                 height: SizeConfig.heightMultiplier * 2,
@@ -282,7 +290,7 @@ class _BrowserBodyState extends State<BrowserBody>
   }
 }
 
-class BottomSocialBar extends StatelessWidget {
+class MobileBottomSocialBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -342,24 +350,28 @@ class BottomSocialBar extends StatelessWidget {
   }
 }
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class MobileCustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         var topButtonStyle = TextStyle(
           fontSize:
-              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 20
-                  : 15,
+          (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+              ? 20
+              : 10,
           fontWeight: FontWeight.bold,
           color: AppColors.textColor,
         );
+
+        var imagePadding = (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+            ? 8.0
+            : 18.0;
         return AppBar(
           leading: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(imagePadding),
                 child: Image.asset('assets/images/ml.png'),
               ),
             ],
