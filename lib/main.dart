@@ -18,10 +18,10 @@ class MyApp extends StatelessWidget {
             SizeConfig().init(constraints, orientation);
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'Mahmoud eslami',
+              title: 'Mahmoud Eslami',
               theme: ThemeData(
                 primarySwatch: Colors.blueGrey,
-                fontFamily: "OpenSansR",
+                fontFamily: "condensed",
                 brightness: Brightness.dark,
               ),
               home: ResponsiveBuilder(
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
                   return (sizingInformation.deviceScreenType ==
                           DeviceScreenType.desktop)
                       ? MainScreenBrowser()
-                      : MainScreenMobile();
+                      : MainScreenBrowser();
                 },
               ),
             );

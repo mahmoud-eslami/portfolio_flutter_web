@@ -8,7 +8,7 @@ class ShapeOne extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint_0 = new Paint()
-      ..color = AppColors.boldTextColor.withOpacity(.1)
+      ..color = AppColors.bgColor.withOpacity(.1)
       ..style = PaintingStyle.stroke
       ..strokeWidth = SizeConfig.widthMultiplier;
 
