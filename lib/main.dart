@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blueGrey,
                 fontFamily: "condensed",
-                brightness: Brightness.dark,
+                brightness: Brightness.light,
               ),
               home: ResponsiveBuilder(
                 builder: (context, sizingInformation) {
