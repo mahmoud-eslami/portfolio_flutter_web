@@ -298,7 +298,7 @@ class MobileBottomSocialBar extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            CustomUrlLauncher.emailUrlLauncher(
+            CustomUrlLauncher.urlLauncher(
                 url: "https://github.com/mahmoud-eslami");
           },
           child: Image.asset(
@@ -311,7 +311,7 @@ class MobileBottomSocialBar extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            CustomUrlLauncher.emailUrlLauncher(
+            CustomUrlLauncher.urlLauncher(
                 url: "https://www.instagram.com/bigproblembig/");
           },
           child: Image.asset(
@@ -324,7 +324,7 @@ class MobileBottomSocialBar extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            CustomUrlLauncher.emailUrlLauncher(
+            CustomUrlLauncher.urlLauncher(
                 url: "https://www.linkedin.com/in/mahmoud-eslami-182351197/");
           },
           child: Image.asset(
@@ -337,7 +337,7 @@ class MobileBottomSocialBar extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            CustomUrlLauncher.emailUrlLauncher(
+            CustomUrlLauncher.urlLauncher(
                 url: "https://twitter.com/es_mahmoud_");
           },
           child: Image.asset(

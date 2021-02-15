@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CustomUrlLauncher {
-  static void emailUrlLauncher({String url}) async {
+  static void urlLauncher({String url}) async {
     if (kIsWeb) {
       window.open(url, 'Link');
     } else {

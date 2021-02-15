@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/resource/colors.dart';
 import 'package:portfolio/resource/strings.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
+import 'package:portfolio/tools/url_launcher/custom_url_launcher.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class MainScreenBrowser extends StatelessWidget {
@@ -52,7 +53,9 @@ class BodyWidgetBrowserView extends StatelessWidget {
         );
         return Column(
           children: [
-            SizedBox(height: SizeConfig.heightMultiplier * 5,),
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 5,
+            ),
             ImageWidget(),
             Text(
               AppString.helloTitle,
@@ -66,7 +69,9 @@ class BodyWidgetBrowserView extends StatelessWidget {
               AppString.myMajor,
               style: smallTitleTheme,
             ),
-            SizedBox(height: SizeConfig.heightMultiplier * 4,),
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 4,
+            ),
             SocialAccountWidget()
           ],
         );
@@ -97,32 +102,56 @@ class SocialAccountWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         FlatButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
           child: Image.asset(
             'assets/images/github.png',
             width: SizeConfig.widthMultiplier * 6,
+            height: SizeConfig.widthMultiplier * 6,
           ),
-          onPressed: () {},
+          onPressed: () {
+            CustomUrlLauncher.urlLauncher(url: AppString.github);
+          },
         ),
         FlatButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
           child: Image.asset(
             'assets/images/linkedin.png',
             width: SizeConfig.widthMultiplier * 6,
+            height: SizeConfig.widthMultiplier * 6,
           ),
-          onPressed: () {},
+          onPressed: () {
+            CustomUrlLauncher.urlLauncher(url: AppString.linkedin);
+          },
         ),
         FlatButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
           child: Image.asset(
             'assets/images/trello.png',
             width: SizeConfig.widthMultiplier * 6,
+            height: SizeConfig.widthMultiplier * 6,
           ),
-          onPressed: () {},
+          onPressed: () {
+            CustomUrlLauncher.urlLauncher(url: AppString.trello);
+          },
         ),
         FlatButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
           child: Image.asset(
             'assets/images/twitter.png',
             width: SizeConfig.widthMultiplier * 6,
+            height: SizeConfig.widthMultiplier * 6,
           ),
-          onPressed: () {},
+          onPressed: () {
+            CustomUrlLauncher.urlLauncher(url: AppString.twiter);
+          },
         ),
       ],
     );
@@ -146,6 +175,9 @@ class TopBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FlatButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
                 child: Text(
                   AppString.aboutTitle,
                   style: topBarTextTheme,
@@ -155,6 +187,9 @@ class TopBar extends StatelessWidget {
               width: SizeConfig.widthMultiplier * 5,
             ),
             FlatButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
                 child: Text(
                   AppString.projectTitle,
                   style: topBarTextTheme,
@@ -164,6 +199,9 @@ class TopBar extends StatelessWidget {
               width: SizeConfig.widthMultiplier * 5,
             ),
             FlatButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
                 child: Text(
                   AppString.contactTitle,
                   style: topBarTextTheme,
