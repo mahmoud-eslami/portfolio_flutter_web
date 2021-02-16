@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_scrollbar/flutter_web_scrollbar.dart';
 import 'package:portfolio/resource/colors.dart';
 import 'package:portfolio/resource/strings.dart';
+import 'package:portfolio/tools/flutter_web_scrollBar/flutter_web_scrollBar.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
 import 'package:portfolio/tools/url_launcher/custom_url_launcher.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -36,20 +37,12 @@ class _MainScreenBrowserState extends State<MainScreenBrowser> {
             controller: _scrollController,
             child: Column(
               children: [
-                TopBar(),
-                BodyWidgetBrowserView(),
+                IntroWidgetBrowserView(),
+                ProjectWidgetBrowserView(),
               ],
             ),
           ),
-          FlutterWebScroller(
-            scrollCallBack,
-            scrollBarBackgroundColor: Colors.white.withOpacity(.2),
-            scrollBarWidth: 20.0,
-            dragHandleColor: Colors.grey,
-            dragHandleBorderRadius: 2.0,
-            dragHandleHeight: 40.0,
-            dragHandleWidth: 15.0,
-          ),
+          CustomFlutterScrollBar(scrollCallBack: scrollCallBack),
         ],
       ),
     );
@@ -59,40 +52,57 @@ class _MainScreenBrowserState extends State<MainScreenBrowser> {
 class ProjectWidgetBrowserView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ResponsiveBuilder(
-      builder: (context, sizingInformation) {
-        var bigTitleTheme = TextStyle(
-          color: AppColors.textColor,
-          fontSize:
-          (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-              ? 100
-              : 80,
-          fontWeight: FontWeight.w300,
-        );
-        var mediumTitleTheme = TextStyle(
-          color: AppColors.textColor,
-          fontSize:
-          (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-              ? 40
-              : 30,
-          fontWeight: FontWeight.w300,
-        );
-        var smallTitleTheme = TextStyle(
-          color: AppColors.textColor,
-          fontSize:
-          (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-              ? 30
-              : 20,
-          fontWeight: FontWeight.w300,
-        );
-        return Container();
-      },
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: ResponsiveBuilder(
+        builder: (context, sizingInformation) {
+          var bigTitleTheme = TextStyle(
+            color: AppColors.textColor,
+            fontSize:
+                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    ? 60
+                    : 50,
+            fontWeight: FontWeight.bold,
+          );
+          return Column(
+            children: [
+              Text(
+                AppString.projectTitle,
+                style: bigTitleTheme,
+              ),
+              ProjectItemBrowserView(
+                  seeProjectFunc: () {},
+                  date: AppString.guessWhatDate,
+                  title: AppString.guessWhatTitle,
+                  description: AppString.guessWhatDescription,
+                  imgPath: 'assets/images/guess_what.png'),
+              ProjectItemBrowserView(
+                  seeProjectFunc: () {},
+                  date: AppString.ketoDate,
+                  title: AppString.ketoTitle,
+                  description: AppString.ketoDescription,
+                  imgPath: 'assets/images/keto.png'),
+            ],
+          );
+        },
+      ),
     );
   }
 }
 
+class ProjectItemBrowserView extends StatelessWidget {
+  final String date, title, description, imgPath;
+  final Function seeProjectFunc;
 
-class BodyWidgetBrowserView extends StatelessWidget {
+  const ProjectItemBrowserView({
+    Key key,
+    @required this.date,
+    @required this.title,
+    @required this.description,
+    @required this.imgPath,
+    @required this.seeProjectFunc,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
@@ -101,51 +111,130 @@ class BodyWidgetBrowserView extends StatelessWidget {
           color: AppColors.textColor,
           fontSize:
               (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 100
-                  : 80,
+                  ? 40
+                  : 30,
           fontWeight: FontWeight.w300,
         );
         var mediumTitleTheme = TextStyle(
           color: AppColors.textColor,
           fontSize:
               (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 40
-                  : 30,
+                  ? 20
+                  : 15,
           fontWeight: FontWeight.w300,
         );
         var smallTitleTheme = TextStyle(
-          color: AppColors.textColor,
+          color: AppColors.buttonColor,
           fontSize:
               (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 30
-                  : 20,
+                  ? 15
+                  : 10,
           fontWeight: FontWeight.w300,
         );
-        return Column(
-          children: [
-            SizedBox(
-              height: SizeConfig.heightMultiplier * 6,
-            ),
-            ImageWidget(),
-            Text(
-              AppString.helloTitle,
-              style: bigTitleTheme,
-            ),
-            Text(
-              AppString.myNameTitle,
-              style: smallTitleTheme,
-            ),
-            Text(
-              AppString.myMajor,
-              style: smallTitleTheme,
-            ),
-            SizedBox(
-              height: SizeConfig.heightMultiplier * 4,
-            ),
-            SocialAccountWidget()
-          ],
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 30),
+          child: Row(
+            children: [
+              Image.asset(
+                imgPath,
+                width: SizeConfig.imageSizeMultiplier * 18,
+              ),
+              SizedBox(
+                width: SizeConfig.widthMultiplier * 3,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: bigTitleTheme,
+                  ),
+                  Text(
+                    date,
+                    style: smallTitleTheme,
+                  ),
+                  Text(
+                    description,
+                    style: mediumTitleTheme,
+                  ),
+                  FlatButton(
+                    onPressed: seeProjectFunc,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Text(
+                      AppString.seeProjectBtn,
+                      style: smallTitleTheme,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         );
       },
+    );
+  }
+}
+
+class IntroWidgetBrowserView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: ResponsiveBuilder(
+        builder: (context, sizingInformation) {
+          var bigTitleTheme = TextStyle(
+            color: AppColors.textColor,
+            fontSize:
+                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    ? 100
+                    : 80,
+            fontWeight: FontWeight.w300,
+          );
+          var mediumTitleTheme = TextStyle(
+            color: AppColors.textColor,
+            fontSize:
+                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    ? 40
+                    : 30,
+            fontWeight: FontWeight.w300,
+          );
+          var smallTitleTheme = TextStyle(
+            color: AppColors.textColor,
+            fontSize:
+                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    ? 30
+                    : 20,
+            fontWeight: FontWeight.w300,
+          );
+          return Column(
+            children: [
+              TopBar(),
+              SizedBox(
+                height: SizeConfig.heightMultiplier * 6,
+              ),
+              ImageWidget(),
+              Text(
+                AppString.helloTitle,
+                style: bigTitleTheme,
+              ),
+              Text(
+                AppString.myNameTitle,
+                style: smallTitleTheme,
+              ),
+              Text(
+                AppString.myMajor,
+                style: smallTitleTheme,
+              ),
+              SizedBox(
+                height: SizeConfig.heightMultiplier * 4,
+              ),
+              SocialAccountWidget()
+            ],
+          );
+        },
+      ),
     );
   }
 }
