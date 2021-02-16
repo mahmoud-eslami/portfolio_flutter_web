@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
             SizeConfig().init(constraints, orientation);
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'Mahmoud Eslami',
+              title: 'Mahmoud Eslami | Portfolio',
               theme: ThemeData(
                 primarySwatch: Colors.blueGrey,
                 fontFamily: "condensed",

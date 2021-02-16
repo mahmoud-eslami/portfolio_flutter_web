@@ -33,6 +33,7 @@ dependencies:
   url_launcher: ^5.4.2
   google_fonts: ^1.1.2
   get: ^3.25.4
+  flutter_web_scrollbar: ^0.0.3
 
 dev_dependencies:
   flutter_test:
