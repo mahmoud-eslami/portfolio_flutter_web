@@ -119,23 +119,204 @@ class AboutMeWidgetBrowserView extends StatelessWidget {
                 (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
                     ? 15
                     : 10,
-            fontWeight: FontWeight.w300,
+            fontWeight: FontWeight.bold,
+          );
+          var skillTitleTheme = TextStyle(
+            color: AppColors.bgColor,
+            fontSize:
+                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    ? 19
+                    : 12,
+            fontWeight: FontWeight.w600,
           );
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
+                vertical: 20,
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     AppString.aboutMeEmoji,
                     style: bigTitleTheme,
                   ),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier * 2,
+                  ),
                   Text(
                     AppString.introduceMySelf,
                     style: mediumTitleTheme,
+                  ),
+                  Text(""),
+                  Text(
+                    AppString.skills,
+                    style:
+                        mediumTitleTheme.copyWith(fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier * 2,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            AppString.myMainSkills,
+                            style: smallTitleTheme,
+                          ),
+                          SizedBox(
+                            height: SizeConfig.heightMultiplier * 1,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: AppColors.buttonColor,
+                            ),
+                            width: 100,
+                            height: 40,
+                            child: Center(
+                                child: Text(
+                              AppString.dart,
+                              style: skillTitleTheme,
+                            )),
+                          ),
+                          SizedBox(
+                            height: SizeConfig.heightMultiplier * 1,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: AppColors.buttonColor,
+                            ),
+                            width: 100,
+                            height: 40,
+                            child: Center(
+                                child: Text(
+                              AppString.flutter,
+                              style: skillTitleTheme,
+                            )),
+                          ),
+                          SizedBox(
+                            height: SizeConfig.heightMultiplier * 1,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: AppColors.buttonColor,
+                            ),
+                            width: 100,
+                            height: 40,
+                            child: Center(
+                                child: Text(
+                              AppString.git,
+                              style: skillTitleTheme,
+                            )),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: SizeConfig.widthMultiplier * 10,
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            AppString.myExtraSkills,
+                            style: smallTitleTheme,
+                          ),
+                          SizedBox(
+                            height: SizeConfig.heightMultiplier * 1,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: AppColors.buttonColor,
+                            ),
+                            width: 100,
+                            height: 40,
+                            child: Center(
+                                child: Text(
+                              AppString.java,
+                              style: skillTitleTheme,
+                            )),
+                          ),
+                          SizedBox(
+                            height: SizeConfig.heightMultiplier * 1,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: AppColors.buttonColor,
+                            ),
+                            width: 100,
+                            height: 40,
+                            child: Center(
+                                child: Text(
+                              AppString.python,
+                              style: skillTitleTheme,
+                            )),
+                          ),
+                          SizedBox(
+                            height: SizeConfig.heightMultiplier * 1,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: AppColors.buttonColor,
+                            ),
+                            width: 100,
+                            height: 40,
+                            child: Center(
+                                child: Text(
+                              AppString.django,
+                              style: skillTitleTheme,
+                            )),
+                          ),
+                          SizedBox(
+                            height: SizeConfig.heightMultiplier * 1,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: AppColors.buttonColor,
+                            ),
+                            width: 100,
+                            height: 40,
+                            child: Center(
+                                child: Text(
+                              AppString.trello,
+                              style: skillTitleTheme,
+                            )),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier * 2,
+                  ),
+                  SizedBox(
+                    width: SizeConfig.widthMultiplier * 30,
+                    child: OutlineButton(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          AppString.downloadCv,
+                          style: mediumTitleTheme.copyWith(
+                            color: AppColors.buttonColor,
+                          ),
+                        ),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      borderSide: BorderSide(
+                        color: AppColors.buttonColor,
+                      ),
+                      onPressed: () {},
+                    ),
                   ),
                 ],
               ),
@@ -421,7 +602,7 @@ class SocialAccountWidget extends StatelessWidget {
             height: SizeConfig.widthMultiplier * 6,
           ),
           onPressed: () {
-            CustomUrlLauncher.urlLauncher(url: AppString.trello);
+            CustomUrlLauncher.urlLauncher(url: AppString.trelloUrl);
           },
         ),
         FlatButton(
