@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_scrollbar/flutter_web_scrollbar.dart';
 import 'package:portfolio/resource/colors.dart';
 import 'package:portfolio/resource/strings.dart';
-import 'package:portfolio/tools/flutter_web_scrollBar/flutter_web_scrollBar.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
 import 'package:portfolio/tools/url_launcher/custom_url_launcher.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -14,6 +12,8 @@ class MainScreenBrowser extends StatefulWidget {
 
 class _MainScreenBrowserState extends State<MainScreenBrowser> {
   ScrollController _scrollController;
+  final introPageKey = new GlobalKey();
+  final projectWidgetKey = new GlobalKey();
 
   @override
   void initState() {
@@ -37,12 +37,24 @@ class _MainScreenBrowserState extends State<MainScreenBrowser> {
             controller: _scrollController,
             child: Column(
               children: [
-                IntroWidgetBrowserView(),
-                ProjectWidgetBrowserView(),
+                IntroWidgetBrowserView(
+                  widgetKey: introPageKey,
+                  projectTitleOnTap: () {
+                    Scrollable.ensureVisible(
+                      projectWidgetKey.currentContext,
+                      duration: Duration(seconds: 1),
+                      curve: Curves.ease,
+                    );
+                  },
+                  aboutTitleOnTap: () {},
+                  contactTitleOnTap: () {},
+                ),
+                ProjectWidgetBrowserView(
+                  widgetKey: projectWidgetKey,
+                ),
               ],
             ),
           ),
-          CustomFlutterScrollBar(scrollCallBack: scrollCallBack),
         ],
       ),
     );
@@ -50,9 +62,15 @@ class _MainScreenBrowserState extends State<MainScreenBrowser> {
 }
 
 class ProjectWidgetBrowserView extends StatelessWidget {
+  final GlobalKey widgetKey;
+
+  const ProjectWidgetBrowserView({Key key, @required this.widgetKey})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      key: widgetKey,
       height: MediaQuery.of(context).size.height,
       child: ResponsiveBuilder(
         builder: (context, sizingInformation) {
@@ -132,7 +150,7 @@ class ProjectItemBrowserView extends StatelessWidget {
           fontWeight: FontWeight.w300,
         );
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
           child: Row(
             children: [
               Image.asset(
@@ -178,9 +196,21 @@ class ProjectItemBrowserView extends StatelessWidget {
 }
 
 class IntroWidgetBrowserView extends StatelessWidget {
+  final GlobalKey widgetKey;
+  final Function projectTitleOnTap, aboutTitleOnTap, contactTitleOnTap;
+
+  const IntroWidgetBrowserView({
+    Key key,
+    @required this.widgetKey,
+    @required this.projectTitleOnTap,
+    @required this.aboutTitleOnTap,
+    @required this.contactTitleOnTap,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      key: widgetKey,
       height: MediaQuery.of(context).size.height,
       child: ResponsiveBuilder(
         builder: (context, sizingInformation) {
@@ -210,7 +240,11 @@ class IntroWidgetBrowserView extends StatelessWidget {
           );
           return Column(
             children: [
-              TopBar(),
+              TopBar(
+                projectTitleOnTap: projectTitleOnTap,
+                aboutTitleOnTap: aboutTitleOnTap,
+                contactTitleOnTap: contactTitleOnTap,
+              ),
               SizedBox(
                 height: SizeConfig.heightMultiplier * 6,
               ),
@@ -318,6 +352,15 @@ class SocialAccountWidget extends StatelessWidget {
 }
 
 class TopBar extends StatelessWidget {
+  final Function projectTitleOnTap, aboutTitleOnTap, contactTitleOnTap;
+
+  const TopBar({
+    Key key,
+    @required this.projectTitleOnTap,
+    @required this.aboutTitleOnTap,
+    @required this.contactTitleOnTap,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
@@ -334,14 +377,15 @@ class TopBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FlatButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: Text(
-                  AppString.aboutTitle,
-                  style: topBarTextTheme,
-                ),
-                onPressed: () {}),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100),
+              ),
+              child: Text(
+                AppString.aboutTitle,
+                style: topBarTextTheme,
+              ),
+              onPressed: aboutTitleOnTap,
+            ),
             SizedBox(
               width: SizeConfig.widthMultiplier * 5,
             ),
@@ -353,7 +397,7 @@ class TopBar extends StatelessWidget {
                   AppString.projectTitle,
                   style: topBarTextTheme,
                 ),
-                onPressed: () {}),
+                onPressed: projectTitleOnTap),
             SizedBox(
               width: SizeConfig.widthMultiplier * 5,
             ),
@@ -365,7 +409,7 @@ class TopBar extends StatelessWidget {
                   AppString.contactTitle,
                   style: topBarTextTheme,
                 ),
-                onPressed: () {}),
+                onPressed: contactTitleOnTap),
           ],
         );
       },
