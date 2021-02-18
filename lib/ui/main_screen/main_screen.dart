@@ -12,8 +12,9 @@ class MainScreenBrowser extends StatefulWidget {
 
 class _MainScreenBrowserState extends State<MainScreenBrowser> {
   ScrollController _scrollController;
-  final introPageKey = new GlobalKey();
-  final projectWidgetKey = new GlobalKey();
+  final introPageKey = GlobalKey();
+  final projectWidgetKey = GlobalKey();
+  final aboutMeWidgetKey = GlobalKey();
 
   @override
   void initState() {
@@ -31,6 +32,21 @@ class _MainScreenBrowserState extends State<MainScreenBrowser> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bgColor,
+      floatingActionButton: FloatingActionButton(
+        elevation: 20,
+        mini: true,
+        backgroundColor: AppColors.buttonColor,
+        onPressed: () {
+          Scrollable.ensureVisible(
+            introPageKey.currentContext,
+            duration: Duration(seconds: 1),
+            curve: Curves.ease,
+          );
+        },
+        child: Icon(
+          Icons.keyboard_arrow_up,
+        ),
+      ),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -46,9 +62,16 @@ class _MainScreenBrowserState extends State<MainScreenBrowser> {
                       curve: Curves.ease,
                     );
                   },
-                  aboutTitleOnTap: () {},
+                  aboutTitleOnTap: () {
+                    Scrollable.ensureVisible(
+                      aboutMeWidgetKey.currentContext,
+                      duration: Duration(seconds: 1),
+                      curve: Curves.ease,
+                    );
+                  },
                   contactTitleOnTap: () {},
                 ),
+                AboutMeWidgetBrowserView(widgetKey: aboutMeWidgetKey),
                 ProjectWidgetBrowserView(
                   widgetKey: projectWidgetKey,
                 ),
@@ -56,6 +79,69 @@ class _MainScreenBrowserState extends State<MainScreenBrowser> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class AboutMeWidgetBrowserView extends StatelessWidget {
+  final GlobalKey widgetKey;
+
+  const AboutMeWidgetBrowserView({Key key, @required this.widgetKey})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      key: widgetKey,
+      height: MediaQuery.of(context).size.height,
+      child: ResponsiveBuilder(
+        builder: (context, sizingInformation) {
+          var bigTitleTheme = TextStyle(
+            color: AppColors.textColor,
+            fontSize:
+                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    ? 60
+                    : 50,
+            fontWeight: FontWeight.bold,
+          );
+          var mediumTitleTheme = TextStyle(
+            color: AppColors.textColor,
+            fontSize:
+                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    ? 27
+                    : 20,
+            fontWeight: FontWeight.w600,
+          );
+          var smallTitleTheme = TextStyle(
+            color: AppColors.buttonColor,
+            fontSize:
+                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    ? 15
+                    : 10,
+            fontWeight: FontWeight.w300,
+          );
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    AppString.aboutMeEmoji,
+                    style: bigTitleTheme,
+                  ),
+                  Text(
+                    AppString.introduceMySelf,
+                    style: mediumTitleTheme,
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -82,25 +168,28 @@ class ProjectWidgetBrowserView extends StatelessWidget {
                     : 50,
             fontWeight: FontWeight.bold,
           );
-          return Column(
-            children: [
-              Text(
-                AppString.projectTitle,
-                style: bigTitleTheme,
-              ),
-              ProjectItemBrowserView(
-                  seeProjectFunc: () {},
-                  date: AppString.guessWhatDate,
-                  title: AppString.guessWhatTitle,
-                  description: AppString.guessWhatDescription,
-                  imgPath: 'assets/images/guess_what.png'),
-              ProjectItemBrowserView(
-                  seeProjectFunc: () {},
-                  date: AppString.ketoDate,
-                  title: AppString.ketoTitle,
-                  description: AppString.ketoDescription,
-                  imgPath: 'assets/images/keto.png'),
-            ],
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                ProjectItemBrowserView(
+                    seeProjectFunc: () {
+                      CustomUrlLauncher.urlLauncher(
+                          url: AppString.guessWhatLink);
+                    },
+                    date: AppString.guessWhatDate,
+                    title: AppString.guessWhatTitle,
+                    description: AppString.guessWhatDescription,
+                    imgPath: 'assets/images/guess_what.png'),
+                ProjectItemBrowserView(
+                    seeProjectFunc: () {
+                      CustomUrlLauncher.urlLauncher(url: AppString.ketoLink);
+                    },
+                    date: AppString.ketoDate,
+                    title: AppString.ketoTitle,
+                    description: AppString.ketoDescription,
+                    imgPath: 'assets/images/keto.png'),
+              ],
+            ),
           );
         },
       ),
@@ -238,34 +327,36 @@ class IntroWidgetBrowserView extends StatelessWidget {
                     : 20,
             fontWeight: FontWeight.w300,
           );
-          return Column(
-            children: [
-              TopBar(
-                projectTitleOnTap: projectTitleOnTap,
-                aboutTitleOnTap: aboutTitleOnTap,
-                contactTitleOnTap: contactTitleOnTap,
-              ),
-              SizedBox(
-                height: SizeConfig.heightMultiplier * 6,
-              ),
-              ImageWidget(),
-              Text(
-                AppString.helloTitle,
-                style: bigTitleTheme,
-              ),
-              Text(
-                AppString.myNameTitle,
-                style: smallTitleTheme,
-              ),
-              Text(
-                AppString.myMajor,
-                style: smallTitleTheme,
-              ),
-              SizedBox(
-                height: SizeConfig.heightMultiplier * 4,
-              ),
-              SocialAccountWidget()
-            ],
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                TopBar(
+                  projectTitleOnTap: projectTitleOnTap,
+                  aboutTitleOnTap: aboutTitleOnTap,
+                  contactTitleOnTap: contactTitleOnTap,
+                ),
+                SizedBox(
+                  height: SizeConfig.heightMultiplier * 6,
+                ),
+                ImageWidget(),
+                Text(
+                  AppString.helloTitle,
+                  style: bigTitleTheme,
+                ),
+                Text(
+                  AppString.myNameTitle,
+                  style: smallTitleTheme,
+                ),
+                Text(
+                  AppString.myMajor,
+                  style: smallTitleTheme,
+                ),
+                SizedBox(
+                  height: SizeConfig.heightMultiplier * 4,
+                ),
+                SocialAccountWidget()
+              ],
+            ),
           );
         },
       ),

@@ -1,8 +1,8 @@
 class AppString{
   static const String helloTitle = 'Hello,';
-  static const String aboutTitle = 'About';
+  static const String aboutTitle = 'About me';
   static const String projectTitle = 'Projects';
-  static const String contactTitle = 'Contact';
+  static const String contactTitle = 'Contact me';
   static const String myNameTitle = "I'm Mahmoud Eslami";
   static const String myMajor = "Flutter Developer";
   static const String github = "https://github.com/mahmoud-eslami";
@@ -18,4 +18,7 @@ class AppString{
   static const String ketoDate = "Feb 2020 – Present";
   static const String guessWhatTitle = "GuessWhat";
   static const String ketoTitle = "KetoLife";
+  static const String aboutMeEmoji = "👨🏼‍💻";
+  static const String introduceMySelf = "My name is Mahmoud Eslami and I was born in 1998 . I live in Iran . I'm a Flutter developer\nwith 2 years experience developing and building application for android/ios️.";
+  // static const String
 }
