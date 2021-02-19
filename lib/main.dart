@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
                 builder: (context, sizingInformation) {
                   return (sizingInformation.deviceScreenType ==
                           DeviceScreenType.desktop)
-                      ? MainScreenBrowser()
-                      : MainScreenBrowser();
+                      ? BrowserScreen()
+                      : MobileScreen();
                 },
               ),
             );

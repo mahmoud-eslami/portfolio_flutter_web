@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:portfolio/resource/colors.dart';
 import 'package:portfolio/resource/strings.dart';
@@ -7,12 +5,12 @@ import 'package:portfolio/tools/size_config/size_config.dart';
 import 'package:portfolio/tools/url_launcher/custom_url_launcher.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class MainScreenBrowser extends StatefulWidget {
+class BrowserScreen extends StatefulWidget {
   @override
-  _MainScreenBrowserState createState() => _MainScreenBrowserState();
+  _BrowserScreenState createState() => _BrowserScreenState();
 }
 
-class _MainScreenBrowserState extends State<MainScreenBrowser> {
+class _BrowserScreenState extends State<BrowserScreen> {
   ScrollController _scrollController;
   final introPageKey = GlobalKey();
   final projectWidgetKey = GlobalKey();
