@@ -38,4 +38,7 @@ class AppString {
   static const String git = 'Git';
   static const String trello = 'Trello';
   static const String downloadCv = 'Download CV';
+  static const String letsTalkToMe = 'Let\'s Talk to Me';
+  static const String call = '+ 98 911 5197795';
+  static const String email = 'mahmoudeslami@hotmail.com';
 }

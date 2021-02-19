@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:portfolio/resource/colors.dart';
 import 'package:portfolio/resource/strings.dart';
@@ -15,6 +17,7 @@ class _MainScreenBrowserState extends State<MainScreenBrowser> {
   final introPageKey = GlobalKey();
   final projectWidgetKey = GlobalKey();
   final aboutMeWidgetKey = GlobalKey();
+  final contactMeWidgetKey = GlobalKey();
 
   @override
   void initState() {
@@ -69,16 +72,139 @@ class _MainScreenBrowserState extends State<MainScreenBrowser> {
                       curve: Curves.ease,
                     );
                   },
-                  contactTitleOnTap: () {},
+                  contactTitleOnTap: () {
+                    Scrollable.ensureVisible(
+                      contactMeWidgetKey.currentContext,
+                      duration: Duration(seconds: 1),
+                      curve: Curves.ease,
+                    );
+                  },
                 ),
                 AboutMeWidgetBrowserView(widgetKey: aboutMeWidgetKey),
                 ProjectWidgetBrowserView(
                   widgetKey: projectWidgetKey,
                 ),
+                ContactMeWidget(
+                  widgetKey: contactMeWidgetKey,
+                ),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ContactMeWidget extends StatelessWidget {
+  final GlobalKey widgetKey;
+
+  const ContactMeWidget({
+    Key key,
+    @required this.widgetKey,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      key: widgetKey,
+      height: MediaQuery.of(context).size.height,
+      child: ResponsiveBuilder(
+        builder: (context, sizingInformation) {
+          var bigTitleTheme = TextStyle(
+            color: AppColors.bgColor,
+            fontSize:
+                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    ? 60
+                    : 50,
+            fontWeight: FontWeight.bold,
+          );
+          var mediumTitleTheme = TextStyle(
+            color: AppColors.textColor,
+            fontSize:
+                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    ? 27
+                    : 20,
+            fontWeight: FontWeight.w600,
+          );
+          var smallTitleTheme = TextStyle(
+            color: AppColors.buttonColor,
+            fontSize:
+                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    ? 15
+                    : 10,
+            fontWeight: FontWeight.bold,
+          );
+          var skillTitleTheme = TextStyle(
+            color: AppColors.buttonColor,
+            fontSize:
+                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    ? 19
+                    : 12,
+            fontWeight: FontWeight.w600,
+          );
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: SizeConfig.heightMultiplier * 12,
+                ),
+                Container(
+                  height: SizeConfig.heightMultiplier * 10,
+                  width: MediaQuery.of(context).size.width,
+                  color: AppColors.buttonColor,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Text(
+                        AppString.letsTalkToMe,
+                        style: bigTitleTheme,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: SizeConfig.heightMultiplier * 2,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/email.png',
+                      width: SizeConfig.imageSizeMultiplier * 4,
+                    ),
+                    SizedBox(
+                      width: SizeConfig.widthMultiplier * 4,
+                    ),
+                    Text(
+                      AppString.email,
+                      style: skillTitleTheme,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: SizeConfig.heightMultiplier * 1,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/phone-call.png',
+                      width: SizeConfig.imageSizeMultiplier * 4,
+                    ),
+                    SizedBox(
+                      width: SizeConfig.widthMultiplier * 4,
+                    ),
+                    Text(
+                      AppString.call,
+                      style: skillTitleTheme,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
@@ -307,6 +433,8 @@ class AboutMeWidgetBrowserView extends StatelessWidget {
                           style: mediumTitleTheme.copyWith(
                             color: AppColors.buttonColor,
                           ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       shape: RoundedRectangleBorder(
