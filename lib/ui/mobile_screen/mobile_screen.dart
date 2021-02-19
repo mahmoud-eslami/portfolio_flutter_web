@@ -214,7 +214,7 @@ class MobileAboutMeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       key: widgetKey,
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height + 200,
       child: ResponsiveBuilder(
         builder: (context, sizingInformation) {
           var bigTitleTheme = TextStyle(
@@ -418,7 +418,7 @@ class MobileAboutMeWidget extends StatelessWidget {
                     height: SizeConfig.heightMultiplier * 2,
                   ),
                   SizedBox(
-                    width: SizeConfig.widthMultiplier * 40,
+                    width: SizeConfig.widthMultiplier * 60,
                     child: OutlineButton(
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -460,7 +460,7 @@ class MobileProjectWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       key: widgetKey,
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height + 100,
       child: ResponsiveBuilder(
         builder: (context, sizingInformation) {
           var bigTitleTheme = TextStyle(
@@ -603,7 +603,7 @@ class MobileIntroWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       key: widgetKey,
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height + 200,
       child: ResponsiveBuilder(
         builder: (context, sizingInformation) {
           var bigTitleTheme = TextStyle(
