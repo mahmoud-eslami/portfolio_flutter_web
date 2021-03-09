@@ -117,22 +117,6 @@ class ContactMeWidget extends StatelessWidget {
                     : 50,
             fontWeight: FontWeight.bold,
           );
-          var mediumTitleTheme = TextStyle(
-            color: AppColors.textColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 27
-                    : 20,
-            fontWeight: FontWeight.w600,
-          );
-          var smallTitleTheme = TextStyle(
-            color: AppColors.buttonColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 15
-                    : 10,
-            fontWeight: FontWeight.bold,
-          );
           var skillTitleTheme = TextStyle(
             color: AppColors.buttonColor,
             fontSize:

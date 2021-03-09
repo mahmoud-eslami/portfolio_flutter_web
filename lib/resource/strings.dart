@@ -3,7 +3,7 @@ class AppString {
   static const String aboutTitle = 'About me';
   static const String projectTitle = 'Projects';
   static const String contactTitle = 'Contact me';
-  static const String myNameTitle = "I'm Mahmoud Eslami";
+  static const String myNameTitle = "Mahmoud Eslami";
   static const String myMajor = "Flutter Developer";
   static const String github = "https://github.com/mahmoud-eslami";
   static const String trelloUrl = "https://trello.com/mahmoudeslami";
@@ -25,7 +25,7 @@ class AppString {
   static const String ketoTitle = "KetoLife";
   static const String aboutMeEmoji = "👨🏼‍💻";
   static const String introduceMySelf =
-      "My name is Mahmoud Eslami and I was born in 1998 . I live in Iran . I'm a Flutter developer\nwith 2 years experience developing and building application for android/ios️.";
+      "My name is Mahmoud Eslami and I was born in 1998 . I live in Iran . I'm a Flutter developer with 2 years experience developing and building application for android and ios️.";
   static const String skills =
       "I’ve mostly worked professionally with Dart , Flutter but also a little bit with Java, Python and Django.";
   static const String myMainSkills = "Main Skill :";
@@ -37,7 +37,7 @@ class AppString {
   static const String java = 'Java';
   static const String git = 'Git';
   static const String trello = 'Trello';
-  static const String downloadCv = 'Download CV';
+  static const String downloadCv = 'My Resume';
   static const String letsTalkToMe = 'Let\'s Talk to Me';
   static const String call = '+ 98 911 5197795';
   static const String email = 'mahmoudeslami@hotmail.com';

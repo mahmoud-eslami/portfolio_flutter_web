@@ -5,12 +5,12 @@ import 'package:portfolio/tools/size_config/size_config.dart';
 import 'package:portfolio/tools/url_launcher/custom_url_launcher.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class MobileScreen extends StatefulWidget {
+class OldMobileScreen extends StatefulWidget {
   @override
-  _MobileScreenState createState() => _MobileScreenState();
+  _OldMobileScreenState createState() => _OldMobileScreenState();
 }
 
-class _MobileScreenState extends State<MobileScreen> {
+class _OldMobileScreenState extends State<OldMobileScreen> {
   ScrollController _scrollController;
   final introPageKey = GlobalKey();
   final projectWidgetKey = GlobalKey();
