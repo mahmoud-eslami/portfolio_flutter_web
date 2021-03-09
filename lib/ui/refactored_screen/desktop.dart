@@ -19,6 +19,86 @@ class DesktopScreen extends HookWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        actions: [
+          ElevatedButton(
+            style: ButtonStyle(
+              elevation: MaterialStateProperty.all(
+                0,
+              ),
+              backgroundColor: MaterialStateProperty.all(
+                Colors.transparent,
+              ),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  side: BorderSide.none,
+                ),
+              ),
+            ),
+            onPressed: () {},
+            child: Text(
+              AppString.aboutTitle,
+              style: TextStyle(
+                color: AppColors.textColor,
+                fontSize: 20,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: SizeConfig.widthMultiplier * 3,
+          ),
+          ElevatedButton(
+            style: ButtonStyle(
+              elevation: MaterialStateProperty.all(
+                0,
+              ),
+              backgroundColor: MaterialStateProperty.all(
+                Colors.transparent,
+              ),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  side: BorderSide.none,
+                ),
+              ),
+            ),
+            onPressed: () {},
+            child: Text(
+              AppString.projectTitle,
+              style: TextStyle(
+                color: AppColors.textColor,
+                fontSize: 20,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: SizeConfig.widthMultiplier * 3,
+          ),
+          ElevatedButton(
+            style: ButtonStyle(
+              elevation: MaterialStateProperty.all(
+                0,
+              ),
+              backgroundColor: MaterialStateProperty.all(
+                Colors.transparent,
+              ),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  side: BorderSide.none,
+                ),
+              ),
+            ),
+            onPressed: () {},
+            child: Text(
+              AppString.contactTitle,
+              style: TextStyle(
+                color: AppColors.textColor,
+                fontSize: 20,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: SizeConfig.widthMultiplier * 3,
+          ),
+        ],
       ),
       backgroundColor: AppColors.bgColor,
       body: ResponsiveBuilder(
