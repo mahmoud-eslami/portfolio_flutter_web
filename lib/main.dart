@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
-import 'package:portfolio/ui/main_screen/main_screen.dart';
-import 'package:portfolio/ui/mobile_screen/mobile_screen.dart';
 import 'package:portfolio/ui/refactored_screen/desktop.dart';
 import 'package:portfolio/ui/refactored_screen/mobile.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+
+import 'ui/main_screen/main_screen.dart';
+import 'ui/refactored_screen/desktop.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
             SizeConfig().init(constraints, orientation);
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'Mahmoud Eslami | Portfolio',
+              title: 'Mahmoud Eslami | محمود اسلامی',
               theme: ThemeData(
                 primarySwatch: Colors.blueGrey,
                 fontFamily: "condensed",

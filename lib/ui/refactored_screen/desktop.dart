@@ -1,105 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/resource/colors.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:portfolio/resource/colors.dart';
 import 'package:portfolio/resource/strings.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:lottie/lottie.dart';
 
 class DesktopScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final animationController = useAnimationController(
-      duration: Duration(seconds: 6),
-    )
-      ..forward()
-      ..addListener(() {});
-    final animationDouble =
-        Tween<double>(begin: 1, end: .2).animate(animationController);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          ElevatedButton(
-            style: ButtonStyle(
-              elevation: MaterialStateProperty.all(
-                0,
-              ),
-              backgroundColor: MaterialStateProperty.all(
-                Colors.transparent,
-              ),
-              shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                  side: BorderSide.none,
-                ),
-              ),
-            ),
-            onPressed: () {},
-            child: Text(
-              AppString.aboutTitle,
-              style: TextStyle(
-                color: AppColors.textColor,
-                fontSize: 20,
-              ),
-            ),
-          ),
-          SizedBox(
-            width: SizeConfig.widthMultiplier * 3,
-          ),
-          ElevatedButton(
-            style: ButtonStyle(
-              elevation: MaterialStateProperty.all(
-                0,
-              ),
-              backgroundColor: MaterialStateProperty.all(
-                Colors.transparent,
-              ),
-              shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                  side: BorderSide.none,
-                ),
-              ),
-            ),
-            onPressed: () {},
-            child: Text(
-              AppString.projectTitle,
-              style: TextStyle(
-                color: AppColors.textColor,
-                fontSize: 20,
-              ),
-            ),
-          ),
-          SizedBox(
-            width: SizeConfig.widthMultiplier * 3,
-          ),
-          ElevatedButton(
-            style: ButtonStyle(
-              elevation: MaterialStateProperty.all(
-                0,
-              ),
-              backgroundColor: MaterialStateProperty.all(
-                Colors.transparent,
-              ),
-              shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                  side: BorderSide.none,
-                ),
-              ),
-            ),
-            onPressed: () {},
-            child: Text(
-              AppString.contactTitle,
-              style: TextStyle(
-                color: AppColors.textColor,
-                fontSize: 20,
-              ),
-            ),
-          ),
-          SizedBox(
-            width: SizeConfig.widthMultiplier * 3,
-          ),
-        ],
-      ),
       backgroundColor: AppColors.bgColor,
       body: ResponsiveBuilder(
         builder: (context, sizingInformation) {
@@ -130,9 +40,9 @@ class DesktopScreen extends HookWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/images/itMan.png',
-                width: SizeConfig.widthMultiplier * 80,
+              Lottie.asset(
+                'assets/images/work.json',
+                repeat: false,
               ),
               SizedBox(
                 width: SizeConfig.widthMultiplier * 10,
@@ -149,6 +59,9 @@ class DesktopScreen extends HookWidget {
                     AppString.myMajor,
                     style: mediumTitleTheme,
                   ),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier * 1,
+                  ),
                   Container(
                     width: SizeConfig.widthMultiplier * 60,
                     child: Text(
@@ -160,33 +73,68 @@ class DesktopScreen extends HookWidget {
                   SizedBox(
                     height: SizeConfig.heightMultiplier * 3,
                   ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(
-                        0,
-                      ),
-                      backgroundColor: MaterialStateProperty.all(
-                        Colors.transparent,
-                      ),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
+                  Row(
+                    children: [
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStateProperty.all(
+                            0,
+                          ),
+                          backgroundColor: MaterialStateProperty.all(
+                            Colors.transparent,
+                          ),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                          ),
+                          side: MaterialStateProperty.all(
+                            BorderSide(
+                              color: AppColors.textColor,
+                            ),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            AppString.downloadCv,
+                            style: smallTitleTheme,
+                          ),
                         ),
                       ),
-                      side: MaterialStateProperty.all(
-                        BorderSide(
-                          color: AppColors.textColor,
+                      SizedBox(
+                        width: SizeConfig.widthMultiplier * 2,
+                      ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStateProperty.all(
+                            0,
+                          ),
+                          backgroundColor: MaterialStateProperty.all(
+                            Colors.transparent,
+                          ),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                          ),
+                          side: MaterialStateProperty.all(
+                            BorderSide(
+                              color: AppColors.textColor,
+                            ),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            AppString.contactTitle,
+                            style: smallTitleTheme,
+                          ),
                         ),
                       ),
-                    ),
-                    onPressed: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        AppString.downloadCv,
-                        style: smallTitleTheme,
-                      ),
-                    ),
+                    ],
                   ),
                 ],
               ),
