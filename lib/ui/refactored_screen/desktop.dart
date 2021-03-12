@@ -17,17 +17,17 @@ class DesktopScreen extends HookWidget {
         builder: (context, sizingInformation) {
           var bigTitleTheme = TextStyle(
             color: AppColors.textColor,
-            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 80 : 60,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 50 : 40,
             fontWeight: FontWeight.w300,
           );
           var mediumTitleTheme = TextStyle(
             color: AppColors.textColor,
-            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 40 : 30,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 30 : 20,
             fontWeight: FontWeight.w300,
           );
           var smallTitleTheme = TextStyle(
             color: AppColors.textColor,
-            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 20 : 15,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 18 : 14,
             fontWeight: FontWeight.w300,
           );
           return Row(

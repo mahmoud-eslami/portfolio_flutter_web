@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
               title: 'Mahmoud Eslami',
               theme: ThemeData(
                 primarySwatch: Colors.blueGrey,
-                fontFamily: "condensed",
+                fontFamily: "OpenSansR",
                 brightness: Brightness.light,
               ),
               home: ResponsiveBuilder(

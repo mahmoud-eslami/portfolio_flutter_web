@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/resource/colors.dart';
 import 'package:portfolio/resource/strings.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
+import 'package:portfolio/tools/url_launcher/custom_url_launcher.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ResumeScreen extends StatelessWidget {
@@ -21,12 +22,17 @@ class ResumeScreen extends StatelessWidget {
         );
         var captionTheme = TextStyle(
           color: AppColors.textColor,
-          fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 10 : 8,
+          fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 15 : 10,
           fontWeight: FontWeight.w300,
         );
         var urlTheme = TextStyle(
           color: Colors.blueAccent,
           fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 20 : 15,
+          fontWeight: FontWeight.w300,
+        );
+        var miniUrlTheme = TextStyle(
+          color: Colors.blueAccent,
+          fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 15 : 10,
           fontWeight: FontWeight.w300,
         );
         return Scaffold(
@@ -64,6 +70,7 @@ class ResumeScreen extends StatelessWidget {
                   experienceWidget(
                     title: bigTitleTheme,
                     description: descriptionTheme,
+                    caption: captionTheme,
                   ),
                   const SizedBox(
                     height: 50,
@@ -78,6 +85,8 @@ class ResumeScreen extends StatelessWidget {
                   openSourceWidget(
                     title: bigTitleTheme,
                     description: descriptionTheme,
+                    caption: captionTheme,
+                    url: miniUrlTheme,
                   ),
                   const SizedBox(
                     height: 50,
@@ -85,6 +94,7 @@ class ResumeScreen extends StatelessWidget {
                   reachMeWidget(
                     title: bigTitleTheme,
                     description: descriptionTheme,
+                    caption: captionTheme,
                   ),
                 ],
               ),
@@ -145,7 +155,7 @@ class ResumeScreen extends StatelessWidget {
     );
   }
 
-  Widget experienceWidget({TextStyle title, description}) {
+  Widget experienceWidget({TextStyle title, description, caption}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -156,15 +166,33 @@ class ResumeScreen extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        SelectableText('Flutter developer'),
-        SelectableText('Freelancer'),
-        SelectableText('8 month'),
+        SelectableText(
+          'Flutter developer',
+          style: description,
+        ),
+        SelectableText(
+          'Freelancer',
+          style: caption,
+        ),
+        SelectableText(
+          '1 year 2 month',
+          style: caption,
+        ),
         const SizedBox(
           height: 20,
         ),
-        SelectableText('Flutter developer'),
-        SelectableText('Dropp Technologies Group (internship)'),
-        SelectableText('8 month'),
+        SelectableText(
+          'Flutter developer',
+          style: description,
+        ),
+        SelectableText(
+          'Dropp Technologies Group (internship)',
+          style: caption,
+        ),
+        SelectableText(
+          '8 month',
+          style: caption,
+        ),
       ],
     );
   }
@@ -228,7 +256,7 @@ class ResumeScreen extends StatelessWidget {
     );
   }
 
-  Widget openSourceWidget({TextStyle title, description}) {
+  Widget openSourceWidget({TextStyle title, description, caption, url}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -239,17 +267,119 @@ class ResumeScreen extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
+        SelectableText(
+          'BottomAnimation | Flutter , Dart',
+          style: description,
+        ),
+        SelectableText(
+          'A bottom navigation package with smooth animation',
+          style: caption,
+        ),
+        SelectableText(
+          'source code : https://github.com/mahmoud-eslami/bottom_animation',
+          style: url,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        SelectableText(
+          'Fake Wallpaper | Flutter , Dart',
+          style: description,
+        ),
+        SelectableText(
+          'In this sample use mvc for application architecture and use getx package for state management and navigation.\n data is fake but in future application will be integrate with wallpaper api.',
+          style: caption,
+        ),
+        SelectableText(
+          'source code : https://github.com/mahmoud-eslami/fake_wallpaper',
+          style: url,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        SelectableText(
+          'School Management | Django , python',
+          style: description,
+        ),
+        SelectableText(
+          'Using drf (Django rest framework) to create a service for managing school.',
+          style: caption,
+        ),
+        SelectableText(
+          'source code : https://github.com/mahmoud-eslami/schoolManagement',
+          style: url,
+        ),
       ],
     );
   }
 
-  Widget reachMeWidget({TextStyle title, description}) {
+  Widget reachMeWidget({TextStyle title, description,caption}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SelectableText(
           AppString.reachMeTitle,
           style: title,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GestureDetector(
+          onTap: () {
+            CustomUrlLauncher.urlLauncher(url: AppString.github);
+          },
+          child: Row(
+            children: [
+              Image.asset(
+                'assets/images/github.png',
+                width: SizeConfig.widthMultiplier * 5,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Text('Github',style: description,),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GestureDetector(
+          onTap: () {
+            CustomUrlLauncher.urlLauncher(url: AppString.twiterUrl);
+          },
+          child: Row(
+            children: [
+              Image.asset(
+                'assets/images/linkedin.png',
+                width: SizeConfig.widthMultiplier * 5,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Text('Linkedin',style: description,),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GestureDetector(
+          onTap: () {
+            CustomUrlLauncher.urlLauncher(url: AppString.twiterUrl);
+          },
+          child: Row(
+            children: [
+              Image.asset(
+                'assets/images/twitter.png',
+                width: SizeConfig.widthMultiplier * 5,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Text('Twitter',style: description,),
+            ],
+          ),
         ),
         const SizedBox(
           height: 20,
