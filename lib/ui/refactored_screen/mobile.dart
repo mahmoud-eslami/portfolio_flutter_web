@@ -91,6 +91,9 @@ class MobileScreen extends HookWidget {
                               backgroundColor: MaterialStateProperty.all(
                                 Colors.transparent,
                               ),
+                              overlayColor: MaterialStateProperty.all(
+                                AppColors.buttonColor,
+                              ),
                               shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50),
@@ -98,7 +101,7 @@ class MobileScreen extends HookWidget {
                               ),
                               side: MaterialStateProperty.all(
                                 BorderSide(
-                                  color: AppColors.textColor,
+                                  color: AppColors.buttonColor,
                                 ),
                               ),
                             ),
@@ -122,6 +125,9 @@ class MobileScreen extends HookWidget {
                               backgroundColor: MaterialStateProperty.all(
                                 Colors.transparent,
                               ),
+                              overlayColor: MaterialStateProperty.all(
+                                AppColors.buttonColor,
+                              ),
                               shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50),
@@ -129,7 +135,7 @@ class MobileScreen extends HookWidget {
                               ),
                               side: MaterialStateProperty.all(
                                 BorderSide(
-                                  color: AppColors.textColor,
+                                  color: AppColors.buttonColor,
                                 ),
                               ),
                             ),

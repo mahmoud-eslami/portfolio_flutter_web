@@ -15,38 +15,23 @@ class DesktopScreen extends HookWidget {
         builder: (context, sizingInformation) {
           var bigTitleTheme = TextStyle(
             color: AppColors.textColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 80
-                    : 60,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 80 : 60,
             fontWeight: FontWeight.w300,
           );
           var mediumTitleTheme = TextStyle(
             color: AppColors.textColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 40
-                    : 30,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 40 : 30,
             fontWeight: FontWeight.w300,
           );
           var smallTitleTheme = TextStyle(
             color: AppColors.textColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 20
-                    : 15,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 20 : 15,
             fontWeight: FontWeight.w300,
           );
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Lottie.asset(
-                'assets/images/work.json',
-                repeat: false,
-              ),
-              SizedBox(
-                width: SizeConfig.widthMultiplier * 10,
-              ),
+
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -80,6 +65,9 @@ class DesktopScreen extends HookWidget {
                           elevation: MaterialStateProperty.all(
                             0,
                           ),
+                          overlayColor: MaterialStateProperty.all(
+                            AppColors.buttonColor,
+                          ),
                           backgroundColor: MaterialStateProperty.all(
                             Colors.transparent,
                           ),
@@ -90,7 +78,7 @@ class DesktopScreen extends HookWidget {
                           ),
                           side: MaterialStateProperty.all(
                             BorderSide(
-                              color: AppColors.textColor,
+                              color: AppColors.buttonColor,
                             ),
                           ),
                         ),
@@ -114,6 +102,9 @@ class DesktopScreen extends HookWidget {
                           backgroundColor: MaterialStateProperty.all(
                             Colors.transparent,
                           ),
+                          overlayColor: MaterialStateProperty.all(
+                            AppColors.buttonColor,
+                          ),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
@@ -121,7 +112,7 @@ class DesktopScreen extends HookWidget {
                           ),
                           side: MaterialStateProperty.all(
                             BorderSide(
-                              color: AppColors.textColor,
+                              color: AppColors.buttonColor,
                             ),
                           ),
                         ),
@@ -138,6 +129,15 @@ class DesktopScreen extends HookWidget {
                   ),
                 ],
               ),
+              SizedBox(
+                width: SizeConfig.widthMultiplier * 10,
+              ),
+              Lottie.asset(
+                'assets/images/work.json',
+                repeat: false,
+                width: SizeConfig.widthMultiplier * 70
+              ),
+
             ],
           );
         },
