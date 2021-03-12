@@ -40,10 +40,10 @@ class AppString {
   static const String email = 'mahmoudeslami@hotmail.com';
 
   static const String location = 'Golestan , Gorgan , iran';
-  static const String summeryTitle = '- Summary';
+  static const String aboutMeTitle = '- About me';
   static const String experienceTitle = '- Experience';
   static const String skillTitle = '- Skills';
   static const String projectsTitle = '- Projects';
   static const String openSourceTitle = '- Open Source';
-  static const String socialMediaTitle = '- Social Media';
+  static const String reachMeTitle = '- Reach me';
 }

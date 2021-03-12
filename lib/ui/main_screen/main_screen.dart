@@ -159,7 +159,7 @@ class ContactMeWidget extends StatelessWidget {
                       width: SizeConfig.widthMultiplier * 4,
                     ),
                     Text(
-                      AppString.summeryTitle,
+                      AppString.aboutMeTitle,
                       style: skillTitleTheme,
                     ),
                   ],
