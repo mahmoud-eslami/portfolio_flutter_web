@@ -498,7 +498,7 @@ class ProjectItemBrowserView extends StatelessWidget {
     @required this.title,
     @required this.description,
     @required this.imgPath,
-    @required this.seeProjectFunc,
+    this.seeProjectFunc,
   }) : super(key: key);
 
   @override
@@ -509,66 +509,48 @@ class ProjectItemBrowserView extends StatelessWidget {
           color: AppColors.textColor,
           fontSize:
               (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 40
-                  : 30,
+                  ? 25
+                  : 20,
           fontWeight: FontWeight.w300,
         );
         var mediumTitleTheme = TextStyle(
           color: AppColors.textColor,
           fontSize:
               (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 20
-                  : 15,
+                  ? 15
+                  : 12,
           fontWeight: FontWeight.w300,
         );
         var smallTitleTheme = TextStyle(
           color: AppColors.buttonColor,
           fontSize:
               (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 15
+                  ? 12
                   : 10,
           fontWeight: FontWeight.w300,
         );
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-          child: Row(
-            children: [
-              Image.asset(
-                imgPath,
-                width: SizeConfig.imageSizeMultiplier * 18,
-              ),
-              SizedBox(
-                width: SizeConfig.widthMultiplier * 3,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: bigTitleTheme,
-                  ),
-                  Text(
-                    date,
-                    style: smallTitleTheme,
-                  ),
-                  Text(
-                    description,
-                    style: mediumTitleTheme,
-                  ),
-                  FlatButton(
-                    onPressed: seeProjectFunc,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Text(
-                      AppString.seeProjectBtn,
-                      style: smallTitleTheme,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: bigTitleTheme,
+            ),
+            Text(
+              date,
+              style: smallTitleTheme,
+            ),
+            Text(
+              description,
+              style: mediumTitleTheme,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+            ),
+            Text(
+              'Published on CafeBazaar',
+              style: smallTitleTheme,
+            ),
+          ],
         );
       },
     );

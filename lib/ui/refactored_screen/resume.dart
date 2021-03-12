@@ -3,6 +3,7 @@ import 'package:portfolio/resource/colors.dart';
 import 'package:portfolio/resource/strings.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
 import 'package:portfolio/tools/url_launcher/custom_url_launcher.dart';
+import 'package:portfolio/ui/main_screen/main_screen.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ResumeScreen extends StatelessWidget {
@@ -95,6 +96,7 @@ class ResumeScreen extends StatelessWidget {
                     title: bigTitleTheme,
                     description: descriptionTheme,
                     caption: captionTheme,
+                    url: miniUrlTheme
                   ),
                 ],
               ),
@@ -148,7 +150,7 @@ class ResumeScreen extends StatelessWidget {
           height: 20,
         ),
         SelectableText(
-          AppString.introduceMySelf,
+          AppString.aboutMe,
           style: description,
         ),
       ],
@@ -313,7 +315,7 @@ class ResumeScreen extends StatelessWidget {
     );
   }
 
-  Widget reachMeWidget({TextStyle title, description,caption}) {
+  Widget reachMeWidget({TextStyle title, description, caption,url}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -324,62 +326,56 @@ class ResumeScreen extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        GestureDetector(
-          onTap: () {
-            CustomUrlLauncher.urlLauncher(url: AppString.github);
-          },
-          child: Row(
-            children: [
-              Image.asset(
-                'assets/images/github.png',
-                width: SizeConfig.widthMultiplier * 5,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Text('Github',style: description,),
-            ],
-          ),
+        Row(
+          children: [
+            Image.asset(
+              'assets/images/github.png',
+              width: SizeConfig.widthMultiplier * 5,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            SelectableText(
+              AppString.github,
+              style: url,
+            ),
+          ],
         ),
         const SizedBox(
           height: 20,
         ),
-        GestureDetector(
-          onTap: () {
-            CustomUrlLauncher.urlLauncher(url: AppString.twiterUrl);
-          },
-          child: Row(
-            children: [
-              Image.asset(
-                'assets/images/linkedin.png',
-                width: SizeConfig.widthMultiplier * 5,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Text('Linkedin',style: description,),
-            ],
-          ),
+        Row(
+          children: [
+            Image.asset(
+              'assets/images/linkedin.png',
+              width: SizeConfig.widthMultiplier * 5,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            SelectableText(
+              AppString.linkedinUrl,
+              style: url,
+            ),
+          ],
         ),
         const SizedBox(
           height: 20,
         ),
-        GestureDetector(
-          onTap: () {
-            CustomUrlLauncher.urlLauncher(url: AppString.twiterUrl);
-          },
-          child: Row(
-            children: [
-              Image.asset(
-                'assets/images/twitter.png',
-                width: SizeConfig.widthMultiplier * 5,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Text('Twitter',style: description,),
-            ],
-          ),
+        Row(
+          children: [
+            Image.asset(
+              'assets/images/twitter.png',
+              width: SizeConfig.widthMultiplier * 5,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            SelectableText(
+              AppString.twiterUrl,
+              style: url,
+            ),
+          ],
         ),
         const SizedBox(
           height: 20,
@@ -399,6 +395,19 @@ class ResumeScreen extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
+        ProjectItemBrowserView(
+            date: AppString.guessWhatDate,
+            title: AppString.guessWhatTitle,
+            description: AppString.guessWhatDescription,
+            imgPath: 'assets/images/guess_what.png'),
+        const SizedBox(
+          height: 20,
+        ),
+        ProjectItemBrowserView(
+            date: AppString.ketoDate,
+            title: AppString.ketoTitle,
+            description: AppString.ketoDescription,
+            imgPath: 'assets/images/keto.png'),
       ],
     );
   }

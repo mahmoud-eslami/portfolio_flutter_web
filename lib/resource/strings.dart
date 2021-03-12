@@ -23,6 +23,7 @@ class AppString {
   static const String aboutMeEmoji = "👨🏼‍💻";
   static const String introduceMySelf =
       "Hi there, my name is Mahmoud. I, m working with flutter and dart around 2 years. Usually I work on android app, but recently doing some flutter web sample and create this portfolio website for himself. On the other hand, I love to be deeper in android and love to increase my knowledge about kotlin and android . I worked on several projects that you can see in my resume.\nFlutter skill : I usually use BLoC for state management, but I worked with provider, and Get-X too. I choose Dio for network handling in flutter, but I am familiar with http package. If you need a flutter developer I, m interested in to participate in your project, please contact me to talk more :)";
+  static const String aboutMe = 'Hi there. I\'m a Flutter Developer with around 2 years experience in flutter and dart. I have experience on several projects. Also, I love open source and I have activity in GitHub. In my free times I usually learn Kotlin and I want to increase my knowledge in android. I\'m usually working as a freelancer, so feel free to award me your projects :) . ';
   static const String skills =
       "I’ve mostly worked professionally with Dart , Flutter but also a little bit with Java, Python and Django.";
   static const String myMainSkills = "Main Skill :";
