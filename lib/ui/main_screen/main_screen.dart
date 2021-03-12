@@ -159,7 +159,7 @@ class ContactMeWidget extends StatelessWidget {
                       width: SizeConfig.widthMultiplier * 4,
                     ),
                     Text(
-                      AppString.email,
+                      AppString.summeryTitle,
                       style: skillTitleTheme,
                     ),
                   ],
@@ -178,7 +178,7 @@ class ContactMeWidget extends StatelessWidget {
                       width: SizeConfig.widthMultiplier * 4,
                     ),
                     Text(
-                      AppString.call,
+                      AppString.number,
                       style: skillTitleTheme,
                     ),
                   ],
@@ -411,7 +411,7 @@ class AboutMeWidgetBrowserView extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          AppString.downloadCv,
+                          AppString.muResume,
                           style: mediumTitleTheme.copyWith(
                             color: AppColors.buttonColor,
                           ),
@@ -473,7 +473,7 @@ class ProjectWidgetBrowserView extends StatelessWidget {
                     imgPath: 'assets/images/guess_what.png'),
                 ProjectItemBrowserView(
                     seeProjectFunc: () {
-                      CustomUrlLauncher.urlLauncher(url: AppString.ketoLink);
+                      CustomUrlLauncher.urlLauncher(url: AppString.ketoUrl);
                     },
                     date: AppString.ketoDate,
                     title: AppString.ketoTitle,
@@ -699,7 +699,7 @@ class SocialAccountWidget extends StatelessWidget {
             height: SizeConfig.widthMultiplier * 6,
           ),
           onPressed: () {
-            CustomUrlLauncher.urlLauncher(url: AppString.linkedin);
+            CustomUrlLauncher.urlLauncher(url: AppString.linkedinUrl);
           },
         ),
         FlatButton(
@@ -725,7 +725,7 @@ class SocialAccountWidget extends StatelessWidget {
             height: SizeConfig.widthMultiplier * 6,
           ),
           onPressed: () {
-            CustomUrlLauncher.urlLauncher(url: AppString.twiter);
+            CustomUrlLauncher.urlLauncher(url: AppString.twiterUrl);
           },
         ),
       ],

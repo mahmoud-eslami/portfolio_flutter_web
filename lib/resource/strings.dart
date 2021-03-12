@@ -7,19 +7,16 @@ class AppString {
   static const String myMajor = "Flutter Developer";
   static const String github = "https://github.com/mahmoud-eslami";
   static const String trelloUrl = "https://trello.com/mahmoudeslami";
-  static const String twiter = "https://twitter.com/es_mahmoud_";
-  static const String linkedin =
-      "https://www.linkedin.com/in/mahmoud-eslami-182351197/";
+  static const String twiterUrl = "https://twitter.com/es_mahmoud_";
+  static const String linkedinUrl = "https://www.linkedin.com/in/mahmoud-eslami";
+  static const String linkedinCaption = "linkedin.com/in/mahmoud-eslami";
   static const String seeProjectBtn = "see project";
   static const String guessWhatDescription =
       "An app that helps you enhance your knowledge by guessing words using pictures .";
-  static const String guessWhatLink =
-      "https://cafebazaar.ir/app/com.mahmoud.guesswhat";
+  static const String guessWhatLink = "https://cafebazaar.ir/app/com.mahmoud.guesswhat";
   static const String guessWhatDate = "Aug 2020 – Present";
-  static const String ketoDescription =
-      "Application in the field of introduction of ketogenic diet.";
-  static const String ketoLink =
-      "https://cafebazaar.ir/app/mahmoud.com.ketolife";
+  static const String ketoDescription = "Application in the field of introduction of ketogenic diet.";
+  static const String ketoUrl = "https://cafebazaar.ir/app/mahmoud.com.ketolife";
   static const String ketoDate = "Feb 2020 – Present";
   static const String guessWhatTitle = "GuessWhat";
   static const String ketoTitle = "KetoLife";
@@ -37,8 +34,16 @@ class AppString {
   static const String java = 'Java';
   static const String git = 'Git';
   static const String trello = 'Trello';
-  static const String downloadCv = 'My Resume';
+  static const String muResume = 'My Resume';
   static const String letsTalkToMe = 'Let\'s Talk to Me';
-  static const String call = '+ 98 911 5197795';
+  static const String number = '+ 98 911 5197795';
   static const String email = 'mahmoudeslami@hotmail.com';
+
+  static const String location = 'Golestan , Gorgan , iran';
+  static const String summeryTitle = '- Summary';
+  static const String experienceTitle = '- Experience';
+  static const String skillTitle = '- Skills';
+  static const String projectsTitle = '- Projects';
+  static const String openSourceTitle = '- Open Source';
+  static const String socialMediaTitle = '- Social Media';
 }

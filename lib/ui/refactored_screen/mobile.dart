@@ -80,75 +80,39 @@ class MobileScreen extends HookWidget {
                       SizedBox(
                         height: SizeConfig.heightMultiplier * 3,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              elevation: MaterialStateProperty.all(
-                                0,
-                              ),
-                              backgroundColor: MaterialStateProperty.all(
-                                Colors.transparent,
-                              ),
-                              overlayColor: MaterialStateProperty.all(
-                                AppColors.buttonColor,
-                              ),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                              ),
-                              side: MaterialStateProperty.all(
-                                BorderSide(
-                                  color: AppColors.buttonColor,
-                                ),
+                      SizedBox(
+                        width: SizeConfig.widthMultiplier * 23,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(
+                              0,
+                            ),
+                            backgroundColor: MaterialStateProperty.all(
+                              Colors.transparent,
+                            ),
+                            overlayColor: MaterialStateProperty.all(
+                              AppColors.buttonColor,
+                            ),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
                               ),
                             ),
-                            onPressed: () {},
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                AppString.downloadCv,
-                                style: smallTitleTheme,
+                            side: MaterialStateProperty.all(
+                              BorderSide(
+                                color: AppColors.buttonColor,
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: SizeConfig.widthMultiplier * 2,
-                          ),
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              elevation: MaterialStateProperty.all(
-                                0,
-                              ),
-                              backgroundColor: MaterialStateProperty.all(
-                                Colors.transparent,
-                              ),
-                              overlayColor: MaterialStateProperty.all(
-                                AppColors.buttonColor,
-                              ),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                              ),
-                              side: MaterialStateProperty.all(
-                                BorderSide(
-                                  color: AppColors.buttonColor,
-                                ),
-                              ),
-                            ),
-                            onPressed: () {},
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                AppString.contactTitle,
-                                style: smallTitleTheme,
-                              ),
+                          onPressed: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              AppString.muResume,
+                              style: smallTitleTheme,
                             ),
                           ),
-                        ],
+                        ),
                       ),
                     ],
                   ),

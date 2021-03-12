@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:get/get.dart';
 import 'package:portfolio/resource/colors.dart';
 import 'package:portfolio/resource/strings.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
+import 'package:portfolio/ui/refactored_screen/resume.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:lottie/lottie.dart';
 
@@ -36,11 +38,11 @@ class DesktopScreen extends HookWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  SelectableText(
                     AppString.myNameTitle,
                     style: bigTitleTheme,
                   ),
-                  Text(
+                  SelectableText(
                     AppString.myMajor,
                     style: mediumTitleTheme,
                   ),
@@ -49,83 +51,49 @@ class DesktopScreen extends HookWidget {
                   ),
                   Container(
                     width: SizeConfig.widthMultiplier * 60,
-                    child: Text(
+                    child: SelectableText(
                       AppString.introduceMySelf,
                       style: smallTitleTheme,
-                      // overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   SizedBox(
                     height: SizeConfig.heightMultiplier * 3,
                   ),
-                  Row(
-                    children: [
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          elevation: MaterialStateProperty.all(
-                            0,
-                          ),
-                          overlayColor: MaterialStateProperty.all(
-                            AppColors.buttonColor,
-                          ),
-                          backgroundColor: MaterialStateProperty.all(
-                            Colors.transparent,
-                          ),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                          ),
-                          side: MaterialStateProperty.all(
-                            BorderSide(
-                              color: AppColors.buttonColor,
-                            ),
+                  SizedBox(
+                    width: SizeConfig.widthMultiplier * 23,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(
+                          0,
+                        ),
+                        overlayColor: MaterialStateProperty.all(
+                          AppColors.buttonColor,
+                        ),
+                        backgroundColor: MaterialStateProperty.all(
+                          Colors.transparent,
+                        ),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
                           ),
                         ),
-                        onPressed: () {},
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            AppString.downloadCv,
-                            style: smallTitleTheme,
+                        side: MaterialStateProperty.all(
+                          BorderSide(
+                            color: AppColors.buttonColor,
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: SizeConfig.widthMultiplier * 2,
-                      ),
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          elevation: MaterialStateProperty.all(
-                            0,
-                          ),
-                          backgroundColor: MaterialStateProperty.all(
-                            Colors.transparent,
-                          ),
-                          overlayColor: MaterialStateProperty.all(
-                            AppColors.buttonColor,
-                          ),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                          ),
-                          side: MaterialStateProperty.all(
-                            BorderSide(
-                              color: AppColors.buttonColor,
-                            ),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            AppString.contactTitle,
-                            style: smallTitleTheme,
-                          ),
+                      onPressed: () {
+                        Get.to(ResumeScreen());
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          AppString.muResume,
+                          style: smallTitleTheme,
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ],
               ),

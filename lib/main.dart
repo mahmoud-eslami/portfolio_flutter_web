@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
 import 'package:portfolio/ui/refactored_screen/desktop.dart';
 import 'package:portfolio/ui/refactored_screen/mobile.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         return OrientationBuilder(
           builder: (context, orientation) {
             SizeConfig().init(constraints, orientation);
-            return MaterialApp(
+            return GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Mahmoud Eslami',
               theme: ThemeData(
