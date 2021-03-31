@@ -477,7 +477,7 @@ class MobileProjectWidget extends StatelessWidget {
                 MobileProjectItem(
                     seeProjectFunc: () {
                       CustomUrlLauncher.urlLauncher(
-                          url: AppString.guessWhatLink);
+                          url: AppString.guessWhatUrl);
                     },
                     date: AppString.guessWhatDate,
                     title: AppString.guessWhatTitle,

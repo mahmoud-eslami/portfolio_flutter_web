@@ -13,11 +13,15 @@ class AppString {
   static const String seeProjectBtn = "see project";
   static const String guessWhatDescription =
       "An app that helps you enhance your knowledge by guessing words using pictures .";
-  static const String guessWhatLink = "https://cafebazaar.ir/app/com.mahmoud.guesswhat";
+  static const String guessWhatUrl = "https://cafebazaar.ir/app/com.mahmoud.guesswhat";
   static const String guessWhatDate = "Aug 2020 – Present";
   static const String ketoDescription = "Application in the field of introduction of ketogenic diet.";
   static const String ketoUrl = "https://cafebazaar.ir/app/mahmoud.com.ketolife";
   static const String ketoDate = "Feb 2020 – Present";
+  static const String cCurrencyTitle = "CCurrency";
+  static const String cCurrencyDescription = "Live cry­pto­currency prices";
+  static const String cCurrencyUrl = "Feb 2020 – Present";
+  static const String cCurrencyDate = "Aug 2020 – Present";
   static const String guessWhatTitle = "GuessWhat";
   static const String ketoTitle = "KetoLife";
   static const String aboutMeEmoji = "👨🏼‍💻";

@@ -93,11 +93,7 @@ class ResumeScreen extends StatelessWidget {
                     height: 50,
                   ),
                   reachMeWidget(
-                    title: bigTitleTheme,
-                    description: descriptionTheme,
-                    caption: captionTheme,
-                    url: miniUrlTheme
-                  ),
+                      title: bigTitleTheme, description: descriptionTheme, caption: captionTheme, url: miniUrlTheme),
                 ],
               ),
             ),
@@ -315,7 +311,7 @@ class ResumeScreen extends StatelessWidget {
     );
   }
 
-  Widget reachMeWidget({TextStyle title, description, caption,url}) {
+  Widget reachMeWidget({TextStyle title, description, caption, url}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -408,6 +404,14 @@ class ResumeScreen extends StatelessWidget {
             title: AppString.ketoTitle,
             description: AppString.ketoDescription,
             imgPath: 'assets/images/keto.png'),
+        const SizedBox(
+          height: 20,
+        ),
+        ProjectItemBrowserView(
+            date: AppString.cCurrencyDate,
+            title: AppString.cCurrencyTitle,
+            description: AppString.cCurrencyDescription,
+            imgPath: 'assets/images/BNT.png'),
       ],
     );
   }
