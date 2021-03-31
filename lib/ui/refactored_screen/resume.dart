@@ -392,6 +392,7 @@ class ResumeScreen extends StatelessWidget {
           height: 20,
         ),
         ProjectItemBrowserView(
+            published: 'Published on CafeBazaar',
             date: AppString.guessWhatDate,
             title: AppString.guessWhatTitle,
             description: AppString.guessWhatDescription,
@@ -400,6 +401,7 @@ class ResumeScreen extends StatelessWidget {
           height: 20,
         ),
         ProjectItemBrowserView(
+            published: 'Published on CafeBazaar',
             date: AppString.ketoDate,
             title: AppString.ketoTitle,
             description: AppString.ketoDescription,
@@ -408,6 +410,7 @@ class ResumeScreen extends StatelessWidget {
           height: 20,
         ),
         ProjectItemBrowserView(
+            published: 'in development',
             date: AppString.cCurrencyDate,
             title: AppString.cCurrencyTitle,
             description: AppString.cCurrencyDescription,

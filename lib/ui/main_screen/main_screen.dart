@@ -111,18 +111,12 @@ class ContactMeWidget extends StatelessWidget {
         builder: (context, sizingInformation) {
           var bigTitleTheme = TextStyle(
             color: AppColors.bgColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 60
-                    : 50,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 60 : 50,
             fontWeight: FontWeight.bold,
           );
           var skillTitleTheme = TextStyle(
             color: AppColors.buttonColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 19
-                    : 12,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 19 : 12,
             fontWeight: FontWeight.w600,
           );
           return SingleChildScrollView(
@@ -195,8 +189,7 @@ class ContactMeWidget extends StatelessWidget {
 class AboutMeWidgetBrowserView extends StatelessWidget {
   final GlobalKey widgetKey;
 
-  const AboutMeWidgetBrowserView({Key key, @required this.widgetKey})
-      : super(key: key);
+  const AboutMeWidgetBrowserView({Key key, @required this.widgetKey}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -207,34 +200,22 @@ class AboutMeWidgetBrowserView extends StatelessWidget {
         builder: (context, sizingInformation) {
           var bigTitleTheme = TextStyle(
             color: AppColors.textColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 60
-                    : 50,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 60 : 50,
             fontWeight: FontWeight.bold,
           );
           var mediumTitleTheme = TextStyle(
             color: AppColors.textColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 27
-                    : 20,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 27 : 20,
             fontWeight: FontWeight.w600,
           );
           var smallTitleTheme = TextStyle(
             color: AppColors.buttonColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 15
-                    : 10,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 15 : 10,
             fontWeight: FontWeight.bold,
           );
           var skillTitleTheme = TextStyle(
             color: AppColors.bgColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 19
-                    : 12,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 19 : 12,
             fontWeight: FontWeight.w600,
           );
           return SingleChildScrollView(
@@ -259,8 +240,7 @@ class AboutMeWidgetBrowserView extends StatelessWidget {
                   Text(""),
                   Text(
                     AppString.skills,
-                    style:
-                        mediumTitleTheme.copyWith(fontWeight: FontWeight.w400),
+                    style: mediumTitleTheme.copyWith(fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
                     height: SizeConfig.heightMultiplier * 2,
@@ -441,8 +421,7 @@ class AboutMeWidgetBrowserView extends StatelessWidget {
 class ProjectWidgetBrowserView extends StatelessWidget {
   final GlobalKey widgetKey;
 
-  const ProjectWidgetBrowserView({Key key, @required this.widgetKey})
-      : super(key: key);
+  const ProjectWidgetBrowserView({Key key, @required this.widgetKey}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -453,25 +432,23 @@ class ProjectWidgetBrowserView extends StatelessWidget {
         builder: (context, sizingInformation) {
           var bigTitleTheme = TextStyle(
             color: AppColors.textColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 60
-                    : 50,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 60 : 50,
             fontWeight: FontWeight.bold,
           );
           return SingleChildScrollView(
             child: Column(
               children: [
                 ProjectItemBrowserView(
+                    published: 'Published on CafeBazaar',
                     seeProjectFunc: () {
-                      CustomUrlLauncher.urlLauncher(
-                          url: AppString.guessWhatUrl);
+                      CustomUrlLauncher.urlLauncher(url: AppString.guessWhatUrl);
                     },
                     date: AppString.guessWhatDate,
                     title: AppString.guessWhatTitle,
                     description: AppString.guessWhatDescription,
                     imgPath: 'assets/images/guess_what.png'),
                 ProjectItemBrowserView(
+                    published: 'Published on CafeBazaar',
                     seeProjectFunc: () {
                       CustomUrlLauncher.urlLauncher(url: AppString.ketoUrl);
                     },
@@ -489,7 +466,7 @@ class ProjectWidgetBrowserView extends StatelessWidget {
 }
 
 class ProjectItemBrowserView extends StatelessWidget {
-  final String date, title, description, imgPath;
+  final String date, title, description, imgPath, published;
   final Function seeProjectFunc;
 
   const ProjectItemBrowserView({
@@ -499,6 +476,7 @@ class ProjectItemBrowserView extends StatelessWidget {
     @required this.description,
     @required this.imgPath,
     this.seeProjectFunc,
+    @required this.published,
   }) : super(key: key);
 
   @override
@@ -507,48 +485,50 @@ class ProjectItemBrowserView extends StatelessWidget {
       builder: (context, sizingInformation) {
         var bigTitleTheme = TextStyle(
           color: AppColors.textColor,
-          fontSize:
-              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 25
-                  : 20,
+          fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 25 : 20,
           fontWeight: FontWeight.w300,
         );
         var mediumTitleTheme = TextStyle(
           color: AppColors.textColor,
-          fontSize:
-              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 15
-                  : 12,
+          fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 15 : 12,
           fontWeight: FontWeight.w300,
         );
         var smallTitleTheme = TextStyle(
           color: AppColors.buttonColor,
-          fontSize:
-              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 12
-                  : 10,
+          fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 12 : 10,
           fontWeight: FontWeight.w300,
         );
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        return Row(
           children: [
-            Text(
-              title,
-              style: bigTitleTheme,
+            Image.asset(
+              imgPath,
+              width: 100,
             ),
-            Text(
-              date,
-              style: smallTitleTheme,
+            SizedBox(
+              width: 20,
             ),
-            Text(
-              description,
-              style: mediumTitleTheme,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-            ),
-            Text(
-              'Published on CafeBazaar',
-              style: smallTitleTheme,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: bigTitleTheme,
+                ),
+                Text(
+                  date,
+                  style: smallTitleTheme,
+                ),
+                Text(
+                  description,
+                  style: mediumTitleTheme,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
+                Text(
+                  published ?? '',
+                  style: smallTitleTheme,
+                ),
+              ],
             ),
           ],
         );
@@ -578,26 +558,17 @@ class IntroWidgetBrowserView extends StatelessWidget {
         builder: (context, sizingInformation) {
           var bigTitleTheme = TextStyle(
             color: AppColors.textColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 100
-                    : 80,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 100 : 80,
             fontWeight: FontWeight.w300,
           );
           var mediumTitleTheme = TextStyle(
             color: AppColors.textColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 40
-                    : 30,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 40 : 30,
             fontWeight: FontWeight.w300,
           );
           var smallTitleTheme = TextStyle(
             color: AppColors.textColor,
-            fontSize:
-                (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                    ? 30
-                    : 20,
+            fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 30 : 20,
             fontWeight: FontWeight.w300,
           );
           return SingleChildScrollView(
@@ -731,10 +702,7 @@ class TopBar extends StatelessWidget {
       builder: (context, sizingInformation) {
         var topBarTextTheme = TextStyle(
           color: AppColors.textColor,
-          fontSize:
-              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                  ? 30
-                  : 20,
+          fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 30 : 20,
           fontWeight: FontWeight.w300,
         );
         return Row(
