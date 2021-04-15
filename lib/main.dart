@@ -4,8 +4,6 @@ import 'package:portfolio/tools/size_config/size_config.dart';
 import 'package:portfolio/ui/refactored_screen/desktop.dart';
 import 'package:portfolio/ui/refactored_screen/mobile.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-
-import 'ui/main_screen/main_screen.dart';
 import 'ui/refactored_screen/desktop.dart';
 
 void main() {

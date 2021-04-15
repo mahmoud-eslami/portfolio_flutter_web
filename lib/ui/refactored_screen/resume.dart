@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/resource/colors.dart';
 import 'package:portfolio/resource/strings.dart';
 import 'package:portfolio/tools/size_config/size_config.dart';
-import 'package:portfolio/tools/url_launcher/custom_url_launcher.dart';
 import 'package:portfolio/ui/main_screen/main_screen.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -13,27 +12,42 @@ class ResumeScreen extends StatelessWidget {
       builder: (context, sizingInformation) {
         var bigTitleTheme = TextStyle(
           color: AppColors.textColor,
-          fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 30 : 20,
+          fontSize:
+              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                  ? 30
+                  : 20,
           fontWeight: FontWeight.bold,
         );
         var descriptionTheme = TextStyle(
           color: AppColors.textColor,
-          fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 20 : 15,
+          fontSize:
+              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                  ? 20
+                  : 15,
           fontWeight: FontWeight.w300,
         );
         var captionTheme = TextStyle(
           color: AppColors.textColor,
-          fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 15 : 10,
+          fontSize:
+              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                  ? 15
+                  : 10,
           fontWeight: FontWeight.w300,
         );
         var urlTheme = TextStyle(
           color: Colors.blueAccent,
-          fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 20 : 15,
+          fontSize:
+              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                  ? 20
+                  : 15,
           fontWeight: FontWeight.w300,
         );
         var miniUrlTheme = TextStyle(
           color: Colors.blueAccent,
-          fontSize: (sizingInformation.deviceScreenType == DeviceScreenType.desktop) ? 15 : 10,
+          fontSize:
+              (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                  ? 15
+                  : 10,
           fontWeight: FontWeight.w300,
         );
         return Scaffold(
@@ -93,7 +107,10 @@ class ResumeScreen extends StatelessWidget {
                     height: 50,
                   ),
                   reachMeWidget(
-                      title: bigTitleTheme, description: descriptionTheme, caption: captionTheme, url: miniUrlTheme),
+                      title: bigTitleTheme,
+                      description: descriptionTheme,
+                      caption: captionTheme,
+                      url: miniUrlTheme),
                 ],
               ),
             ),
@@ -103,7 +120,8 @@ class ResumeScreen extends StatelessWidget {
     );
   }
 
-  Widget introductionWidget({TextStyle urlStyle, bigTitleStyle, descriptionStyle}) {
+  Widget introductionWidget(
+      {TextStyle urlStyle, bigTitleStyle, descriptionStyle}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -113,10 +131,6 @@ class ResumeScreen extends StatelessWidget {
         ),
         const SizedBox(
           height: 20,
-        ),
-        SelectableText(
-          AppString.location,
-          style: descriptionStyle,
         ),
         SelectableText(
           AppString.email,
@@ -160,6 +174,21 @@ class ResumeScreen extends StatelessWidget {
         SelectableText(
           AppString.experienceTitle,
           style: title,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        SelectableText(
+          'Flutter developer',
+          style: description,
+        ),
+        SelectableText(
+          'Code Parser',
+          style: caption,
+        ),
+        SelectableText(
+          'Mar 2021 - now',
+          style: caption,
         ),
         const SizedBox(
           height: 20,
